@@ -6,7 +6,6 @@
         <div class="flex justify-between items-center py-4">
           <div class="flex items-center">
             <NuxtLink to="/" class="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">Rop-dex</NuxtLink>
-            <span class="ml-2 text-sm text-gray-500">RO樂園攻略網站</span>
           </div>
         </div>
       </div>
@@ -16,7 +15,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="text-center">
         <h1 class="text-4xl font-bold text-gray-900 mb-4">
-          歡迎來到 Rop-dex
+          Welcome to Ropdex
         </h1>
         <p class="text-xl text-gray-600 mb-8">
           RO 樂園攻略網站，提供技能模擬器等實用工具
