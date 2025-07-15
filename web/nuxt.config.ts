@@ -5,6 +5,10 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss'
   ],
+  ssr: false,
+  nitro: {
+    preset: 'static'
+  },
   app: {
     head: {
       title: 'Rop-dex - RO樂園攻略網站',
