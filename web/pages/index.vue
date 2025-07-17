@@ -23,11 +23,11 @@
         
         <!-- Feature Cards -->
         <div class="grid grid-cols-1 gap-6 mt-12">
-          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <NuxtLink to="/skill-simulator" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow block">
             <div class="text-3xl mb-4">⚔️</div>
             <h3 class="text-lg font-semibold mb-2">技能模擬器</h3>
             <p class="text-gray-600 text-sm">規劃你的角色技能配點方案</p>
-          </div>
+          </NuxtLink>
         </div>
       </div>
     </main>
