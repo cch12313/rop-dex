@@ -605,13 +605,8 @@ const secondClassJobs: Job[] = [
 
 export const jobClassesData: JobClass[] = [
   {
-    id: 'first_class',
-    name: '一轉職業',
-    jobs: firstClassJobs
-  },
-  {
     id: 'second_class_swordsman',
-    name: '二轉職業 - 劍士系',
+    name: '劍士系職業',
     jobs: secondClassJobs
   }
 ]
