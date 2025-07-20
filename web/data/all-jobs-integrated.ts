@@ -315,21 +315,60 @@ const skillNameMapping: { [key: string]: string } = {
 function convertJobData(jobData: any, jobType: 'first' | 'second'): Job {
   const skills: Skill[] = []
   
-  // 轉換技能資料
+  // 如果是二轉職業，先添加其一轉職業的技能
+  if (jobType === 'second' && jobData.parentJobId) {
+    const parentJob = roSkillDatabase.firstJobs[jobData.parentJobId.toString()]
+    if (parentJob) {
+      // 添加一轉職業的技能
+      for (const [position, skillDetail] of Object.entries(parentJob.skillsDetailed)) {
+        const detail = skillDetail as any
+        const skillName = skillNameMapping[detail.skillName] || detail.chineseName || detail.skillName
+        
+        // 計算技能在技能樹中的位置
+        const pos = parseInt(position)
+        const x = ((pos - 1) % 6) + 1
+        const y = Math.floor((pos - 1) / 6) + 1
+        
+        const skill: Skill = {
+          id: detail.skillName.toLowerCase().replace('_', '_'),
+          name: skillName,
+          icon: getSkillIcon(detail.skillName),
+          description: `${detail.skillName} - ${skillName} (基礎技能)`,
+          maxLevel: 10,
+          requirements: [],
+          effects: [
+            { level: 1, description: '等級 1 效果' },
+            { level: 5, description: '等級 5 效果' },
+            { level: 10, description: '等級 10 效果' }
+          ],
+          position: { x, y }
+        }
+        
+        skills.push(skill)
+      }
+    }
+  }
+  
+  // 添加當前職業的專屬技能
   for (const [position, skillDetail] of Object.entries(jobData.skillsDetailed)) {
     const detail = skillDetail as any
     const skillName = skillNameMapping[detail.skillName] || detail.chineseName || detail.skillName
     
-    // 計算技能在技能樹中的位置 (簡化版本，基於position)
+    // 計算技能在技能樹中的位置 (二轉技能位置需要偏移)
     const pos = parseInt(position)
-    const x = ((pos - 1) % 6) + 1  // 6個技能一行
-    const y = Math.floor((pos - 1) / 6) + 1
+    let x = ((pos - 1) % 6) + 1
+    let y = Math.floor((pos - 1) / 6) + 1
+    
+    // 如果是二轉職業，y座標需要偏移，避免與一轉技能重疊
+    if (jobType === 'second') {
+      y += 10 // 將二轉技能往下移動10行
+    }
     
     const skill: Skill = {
       id: detail.skillName.toLowerCase().replace('_', '_'),
       name: skillName,
       icon: getSkillIcon(detail.skillName),
-      description: `${detail.skillName} - ${skillName}`,
+      description: `${detail.skillName} - ${skillName}${jobType === 'second' ? ' (進階技能)' : ''}`,
       maxLevel: 10, // 默認最大等級
       requirements: [], // 先設空，之後可以根據需要添加
       effects: [
