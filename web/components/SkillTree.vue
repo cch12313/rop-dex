@@ -107,10 +107,9 @@ const connections = computed(() => {
 })
 
 const isSkillAvailable = (skill: Skill): boolean => {
-  return skill.requirements.every(req => {
-    const currentLevel = props.skillPoints[req.skillId] || 0
-    return currentLevel >= req.level
-  })
+  // 現在總是允許點擊技能，因為我們有智能前置技能升級系統
+  // 實際的前置技能檢查和自動升級會在父組件中處理
+  return true
 }
 
 const handleSkillClick = (skill: Skill) => {
