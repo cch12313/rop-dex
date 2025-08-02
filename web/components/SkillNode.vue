@@ -8,7 +8,11 @@
     }"
     @click="handleClick"
   >
-    <div class="skill-icon">{{ skill.icon }}</div>
+    <SkillIcon 
+      :skill-name="skill.name"
+      :skill-id="skill.id"
+      class="skill-icon"
+    />
     <div class="skill-name">{{ skill.name }}</div>
     <div class="skill-level">{{ level }}/{{ skill.maxLevel }}</div>
     
@@ -105,7 +109,8 @@ const decreaseLevel = () => {
 }
 
 .skill-icon {
-  font-size: 20px;
+  width: 26px;
+  height: 26px;
   margin-bottom: 2px;
 }
 

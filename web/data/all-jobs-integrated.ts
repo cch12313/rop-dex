@@ -18,7 +18,7 @@ const skillNameMapping: { [key: string]: string } = {
   
   // 騎士技能
   'KN_TWOHANDQUICKEN': '雙手劍攻擊速度增加',
-  'KN_AUTOCOUNTER': '自動反擊',
+  'KN_AUTOCOUNTER': '反擊',
   'KN_RIDING': '騎術',
   'KN_PIERCE': '長矛刺擊',
   'KN_CHARGEATK': '衝鋒攻擊',
@@ -394,6 +394,10 @@ function convertJobData(jobData: any, jobType: 'first' | 'second'): Job {
 
 // 獲取技能圖標
 function getSkillIcon(skillName: string): string {
+  // 首先嘗試使用實際的圖片檔案
+  const imagePath = `/assets/skill-icons/${skillName}.png`
+  
+  // 備用 emoji 圖標對照表
   const iconMap: { [key: string]: string } = {
     'SM_SWORD': '⚔️',
     'SM_BASH': '💥',
@@ -414,7 +418,8 @@ function getSkillIcon(skillName: string): string {
     'MC_MAMMONITE': '💰'
   }
   
-  return iconMap[skillName] || '⭐'
+  // 如果有對應的圖片，返回圖片路徑；否則返回 emoji
+  return imagePath
 }
 
 // 獲取職業圖標
