@@ -394,7 +394,8 @@ function convertJobData(jobData: any, jobType: 'first' | 'second'): Job {
 
 // 獲取技能圖標
 function getSkillIcon(skillName: string): string {
-  // 首先嘗試使用實際的圖片檔案
+  // 使用實際的技能圖片檔案（由 process-skill-images.cjs 生成）
+  // 目前已支援所有劍士(SM_*)和騎士(KN_*)技能圖片
   const imagePath = `/assets/skill-icons/${skillName}.png`
   
   // 備用 emoji 圖標對照表
