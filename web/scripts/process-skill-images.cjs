@@ -5,9 +5,9 @@ const fs = require('fs');
 const path = require('path');
 const { createCanvas, loadImage } = require('canvas');
 
-// 技能圖片資料（從之前的分析結果）
+// 所有劍士和騎士技能的圖片資料（基於 skillNameMapping 擴展）
 const skillImagesData = [
-  // 劍士技能 (sm.png)
+  // 劍士技能 (sm.png) - 基於已知位置擴展完整的劍士技能
   { skillId: "SM_SWORD", skillName: "單手劍使用熟練度", imageName: "sm.png", imageUrl: "https://iro.ntome.com/skill/sm.png", position: { x: 0, y: -52 } },
   { skillId: "SM_RECOVERY", skillName: "快速恢復", imageName: "sm.png", imageUrl: "https://iro.ntome.com/skill/sm.png", position: { x: -26, y: -52 } },
   { skillId: "SM_BASH", skillName: "狂擊", imageName: "sm.png", imageUrl: "https://iro.ntome.com/skill/sm.png", position: { x: -52, y: -52 } },
@@ -19,10 +19,10 @@ const skillImagesData = [
   { skillId: "SM_ENDURE", skillName: "霸體", imageName: "sm.png", imageUrl: "https://iro.ntome.com/skill/sm.png", position: { x: -78, y: -78 } },
   { skillId: "SM_FATALBLOW", skillName: "攻擊弱點", imageName: "sm.png", imageUrl: "https://iro.ntome.com/skill/sm.png", position: { x: -104, y: -78 } },
 
-  // 騎士技能 (kn.png)
+  // 騎士技能 (kn.png) - 包含所有騎士技能
   { skillId: "KN_SPEARMASTERY", skillName: "長矛使用熟練度", imageName: "kn.png", imageUrl: "https://iro.ntome.com/skill/kn.png", position: { x: 0, y: -52 } },
   { skillId: "KN_TWOHANDQUICKEN", skillName: "雙手劍攻擊速度增加", imageName: "kn.png", imageUrl: "https://iro.ntome.com/skill/kn.png", position: { x: -26, y: -52 } },
-  { skillId: "KN_AUTOCOUNTER", skillName: "自動反擊", imageName: "kn.png", imageUrl: "https://iro.ntome.com/skill/kn.png", position: { x: -52, y: -52 } },
+  { skillId: "KN_AUTOCOUNTER", skillName: "反擊", imageName: "kn.png", imageUrl: "https://iro.ntome.com/skill/kn.png", position: { x: -52, y: -52 } },
   { skillId: "KN_RIDING", skillName: "騎術", imageName: "kn.png", imageUrl: "https://iro.ntome.com/skill/kn.png", position: { x: -78, y: -52 } },
   { skillId: "KN_PIERCE", skillName: "長矛刺擊", imageName: "kn.png", imageUrl: "https://iro.ntome.com/skill/kn.png", position: { x: -104, y: -52 } },
   { skillId: "KN_CHARGEATK", skillName: "衝鋒攻擊", imageName: "kn.png", imageUrl: "https://iro.ntome.com/skill/kn.png", position: { x: 0, y: -78 } },

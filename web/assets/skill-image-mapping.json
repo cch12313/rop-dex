@@ -1,0 +1,262 @@
+{
+  "metadata": {
+    "createdAt": "2025-08-02T13:14:08.423Z",
+    "totalSkills": 21,
+    "successCount": 21,
+    "failCount": 0
+  },
+  "skills": [
+    {
+      "skillId": "SM_SWORD",
+      "skillName": "單手劍使用熟練度",
+      "iconPath": "skill-icons/SM_SWORD.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": 0,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "SM_RECOVERY",
+      "skillName": "快速恢復",
+      "iconPath": "skill-icons/SM_RECOVERY.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": -26,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "SM_BASH",
+      "skillName": "狂擊",
+      "iconPath": "skill-icons/SM_BASH.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": -52,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "SM_PROVOKE",
+      "skillName": "挑釁",
+      "iconPath": "skill-icons/SM_PROVOKE.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": -78,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "SM_AUTOBERSERK",
+      "skillName": "狂暴狀態",
+      "iconPath": "skill-icons/SM_AUTOBERSERK.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": -104,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "SM_MOVINGRECOVERY",
+      "skillName": "移動時恢復HP",
+      "iconPath": "skill-icons/SM_MOVINGRECOVERY.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": 0,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "SM_TWOHAND",
+      "skillName": "雙手劍使用熟練度",
+      "iconPath": "skill-icons/SM_TWOHAND.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": -26,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "SM_MAGNUM",
+      "skillName": "怒爆",
+      "iconPath": "skill-icons/SM_MAGNUM.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": -52,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "SM_ENDURE",
+      "skillName": "霸體",
+      "iconPath": "skill-icons/SM_ENDURE.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": -78,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "SM_FATALBLOW",
+      "skillName": "攻擊弱點",
+      "iconPath": "skill-icons/SM_FATALBLOW.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "position": {
+          "x": -104,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "KN_SPEARMASTERY",
+      "skillName": "長矛使用熟練度",
+      "iconPath": "skill-icons/KN_SPEARMASTERY.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": 0,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "KN_TWOHANDQUICKEN",
+      "skillName": "雙手劍攻擊速度增加",
+      "iconPath": "skill-icons/KN_TWOHANDQUICKEN.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": -26,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "KN_AUTOCOUNTER",
+      "skillName": "反擊",
+      "iconPath": "skill-icons/KN_AUTOCOUNTER.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": -52,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "KN_RIDING",
+      "skillName": "騎術",
+      "iconPath": "skill-icons/KN_RIDING.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": -78,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "KN_PIERCE",
+      "skillName": "長矛刺擊",
+      "iconPath": "skill-icons/KN_PIERCE.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": -104,
+          "y": -52
+        }
+      }
+    },
+    {
+      "skillId": "KN_CHARGEATK",
+      "skillName": "衝鋒攻擊",
+      "iconPath": "skill-icons/KN_CHARGEATK.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": 0,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "KN_BOWLINGBASH",
+      "skillName": "怪物互擊",
+      "iconPath": "skill-icons/KN_BOWLINGBASH.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": -26,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "KN_CAVALIERMASTERY",
+      "skillName": "騎兵修練",
+      "iconPath": "skill-icons/KN_CAVALIERMASTERY.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": -52,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "KN_SPEARBOOMERANG",
+      "skillName": "騎乘攻擊",
+      "iconPath": "skill-icons/KN_SPEARBOOMERANG.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": -78,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "KN_SPEARSTAB",
+      "skillName": "連刺攻擊",
+      "iconPath": "skill-icons/KN_SPEARSTAB.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": -104,
+          "y": -78
+        }
+      }
+    },
+    {
+      "skillId": "KN_BRANDISHSPEAR",
+      "skillName": "投擲長矛攻擊",
+      "iconPath": "skill-icons/KN_BRANDISHSPEAR.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "position": {
+          "x": 0,
+          "y": -104
+        }
+      }
+    }
+  ]
+}
