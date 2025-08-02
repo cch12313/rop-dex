@@ -2,7 +2,7 @@
 docs/
 
 # Claude context files
-CLAUDE.md
+# CLAUDE.md - now tracked for SOP documentation
 
 # IDE
 .idea/
