@@ -1,9 +1,10 @@
 {
   "metadata": {
-    "createdAt": "2025-08-02T12:56:48.461Z",
-    "totalSkills": 21,
-    "successCount": 21,
-    "failCount": 0
+    "createdAt": "2025-08-03T09:11:10.142Z",
+    "totalSkills": 38,
+    "successCount": -33,
+    "failCount": 38,
+    "note": "Added Crusader skills based on ro.ntome.com analysis"
   },
   "skills": [
     {
@@ -12,71 +13,14 @@
       "iconPath": "skill-icons/SM_SWORD.png",
       "spriteSource": {
         "imageName": "sm.png",
-        "position": {
+        "gridPosition": {
+          "row": 2,
+          "col": 0,
           "x": 0,
-          "y": -52
+          "y": 52
         }
-      }
-    },
-    {
-      "skillId": "SM_RECOVERY",
-      "skillName": "快速恢復",
-      "iconPath": "skill-icons/SM_RECOVERY.png",
-      "spriteSource": {
-        "imageName": "sm.png",
-        "position": {
-          "x": -26,
-          "y": -52
-        }
-      }
-    },
-    {
-      "skillId": "SM_BASH",
-      "skillName": "狂擊",
-      "iconPath": "skill-icons/SM_BASH.png",
-      "spriteSource": {
-        "imageName": "sm.png",
-        "position": {
-          "x": -52,
-          "y": -52
-        }
-      }
-    },
-    {
-      "skillId": "SM_PROVOKE",
-      "skillName": "挑釁",
-      "iconPath": "skill-icons/SM_PROVOKE.png",
-      "spriteSource": {
-        "imageName": "sm.png",
-        "position": {
-          "x": -78,
-          "y": -52
-        }
-      }
-    },
-    {
-      "skillId": "SM_AUTOBERSERK",
-      "skillName": "狂暴狀態",
-      "iconPath": "skill-icons/SM_AUTOBERSERK.png",
-      "spriteSource": {
-        "imageName": "sm.png",
-        "position": {
-          "x": -104,
-          "y": -52
-        }
-      }
-    },
-    {
-      "skillId": "SM_MOVINGRECOVERY",
-      "skillName": "移動時恢復HP",
-      "iconPath": "skill-icons/SM_MOVINGRECOVERY.png",
-      "spriteSource": {
-        "imageName": "sm.png",
-        "position": {
-          "x": 0,
-          "y": -78
-        }
-      }
+      },
+      "fileSize": 516
     },
     {
       "skillId": "SM_TWOHAND",
@@ -84,11 +28,29 @@
       "iconPath": "skill-icons/SM_TWOHAND.png",
       "spriteSource": {
         "imageName": "sm.png",
-        "position": {
-          "x": -26,
-          "y": -78
+        "gridPosition": {
+          "row": 2,
+          "col": 1,
+          "x": 26,
+          "y": 52
         }
-      }
+      },
+      "fileSize": 613
+    },
+    {
+      "skillId": "SM_BASH",
+      "skillName": "狂擊",
+      "iconPath": "skill-icons/SM_BASH.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "gridPosition": {
+          "row": 0,
+          "col": 1,
+          "x": 26,
+          "y": 0
+        }
+      },
+      "fileSize": 681
     },
     {
       "skillId": "SM_MAGNUM",
@@ -96,11 +58,29 @@
       "iconPath": "skill-icons/SM_MAGNUM.png",
       "spriteSource": {
         "imageName": "sm.png",
-        "position": {
-          "x": -52,
-          "y": -78
+        "gridPosition": {
+          "row": 1,
+          "col": 0,
+          "x": 0,
+          "y": 26
         }
-      }
+      },
+      "fileSize": 813
+    },
+    {
+      "skillId": "SM_PROVOKE",
+      "skillName": "挑釁",
+      "iconPath": "skill-icons/SM_PROVOKE.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 2,
+          "x": 52,
+          "y": 26
+        }
+      },
+      "fileSize": 558
     },
     {
       "skillId": "SM_ENDURE",
@@ -108,11 +88,44 @@
       "iconPath": "skill-icons/SM_ENDURE.png",
       "spriteSource": {
         "imageName": "sm.png",
-        "position": {
-          "x": -78,
-          "y": -78
+        "gridPosition": {
+          "row": 0,
+          "col": 2,
+          "x": 52,
+          "y": 0
         }
-      }
+      },
+      "fileSize": 476
+    },
+    {
+      "skillId": "SM_RECOVERY",
+      "skillName": "快速恢復",
+      "iconPath": "skill-icons/SM_RECOVERY.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 3,
+          "x": 78,
+          "y": 26
+        }
+      },
+      "fileSize": 522
+    },
+    {
+      "skillId": "SM_MOVINGRECOVERY",
+      "skillName": "移動時恢復HP",
+      "iconPath": "skill-icons/SM_MOVINGRECOVERY.png",
+      "spriteSource": {
+        "imageName": "sm.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 1,
+          "x": 26,
+          "y": 26
+        }
+      },
+      "fileSize": 533
     },
     {
       "skillId": "SM_FATALBLOW",
@@ -120,23 +133,29 @@
       "iconPath": "skill-icons/SM_FATALBLOW.png",
       "spriteSource": {
         "imageName": "sm.png",
-        "position": {
-          "x": -104,
-          "y": -78
+        "gridPosition": {
+          "row": 0,
+          "col": 3,
+          "x": 78,
+          "y": 0
         }
-      }
+      },
+      "fileSize": 523
     },
     {
-      "skillId": "KN_SPEARMASTERY",
-      "skillName": "長矛使用熟練度",
-      "iconPath": "skill-icons/KN_SPEARMASTERY.png",
+      "skillId": "SM_AUTOBERSERK",
+      "skillName": "狂暴狀態",
+      "iconPath": "skill-icons/SM_AUTOBERSERK.png",
       "spriteSource": {
-        "imageName": "kn.png",
-        "position": {
+        "imageName": "sm.png",
+        "gridPosition": {
+          "row": 0,
+          "col": 0,
           "x": 0,
-          "y": -52
+          "y": 0
         }
-      }
+      },
+      "fileSize": 548
     },
     {
       "skillId": "KN_TWOHANDQUICKEN",
@@ -144,59 +163,29 @@
       "iconPath": "skill-icons/KN_TWOHANDQUICKEN.png",
       "spriteSource": {
         "imageName": "kn.png",
-        "position": {
-          "x": -26,
-          "y": -52
+        "gridPosition": {
+          "row": 2,
+          "col": 3,
+          "x": 78,
+          "y": 52
         }
-      }
+      },
+      "fileSize": 622
     },
     {
       "skillId": "KN_AUTOCOUNTER",
-      "skillName": "自動反擊",
+      "skillName": "反擊",
       "iconPath": "skill-icons/KN_AUTOCOUNTER.png",
       "spriteSource": {
         "imageName": "kn.png",
-        "position": {
-          "x": -52,
-          "y": -52
-        }
-      }
-    },
-    {
-      "skillId": "KN_RIDING",
-      "skillName": "騎術",
-      "iconPath": "skill-icons/KN_RIDING.png",
-      "spriteSource": {
-        "imageName": "kn.png",
-        "position": {
-          "x": -78,
-          "y": -52
-        }
-      }
-    },
-    {
-      "skillId": "KN_PIERCE",
-      "skillName": "長矛刺擊",
-      "iconPath": "skill-icons/KN_PIERCE.png",
-      "spriteSource": {
-        "imageName": "kn.png",
-        "position": {
-          "x": -104,
-          "y": -52
-        }
-      }
-    },
-    {
-      "skillId": "KN_CHARGEATK",
-      "skillName": "衝鋒攻擊",
-      "iconPath": "skill-icons/KN_CHARGEATK.png",
-      "spriteSource": {
-        "imageName": "kn.png",
-        "position": {
+        "gridPosition": {
+          "row": 0,
+          "col": 0,
           "x": 0,
-          "y": -78
+          "y": 0
         }
-      }
+      },
+      "fileSize": 656
     },
     {
       "skillId": "KN_BOWLINGBASH",
@@ -204,35 +193,14 @@
       "iconPath": "skill-icons/KN_BOWLINGBASH.png",
       "spriteSource": {
         "imageName": "kn.png",
-        "position": {
-          "x": -26,
-          "y": -78
+        "gridPosition": {
+          "row": 0,
+          "col": 1,
+          "x": 26,
+          "y": 0
         }
-      }
-    },
-    {
-      "skillId": "KN_CAVALIERMASTERY",
-      "skillName": "騎兵修練",
-      "iconPath": "skill-icons/KN_CAVALIERMASTERY.png",
-      "spriteSource": {
-        "imageName": "kn.png",
-        "position": {
-          "x": -52,
-          "y": -78
-        }
-      }
-    },
-    {
-      "skillId": "KN_SPEARBOOMERANG",
-      "skillName": "騎乘攻擊",
-      "iconPath": "skill-icons/KN_SPEARBOOMERANG.png",
-      "spriteSource": {
-        "imageName": "kn.png",
-        "position": {
-          "x": -78,
-          "y": -78
-        }
-      }
+      },
+      "fileSize": 747
     },
     {
       "skillId": "KN_SPEARSTAB",
@@ -240,11 +208,29 @@
       "iconPath": "skill-icons/KN_SPEARSTAB.png",
       "spriteSource": {
         "imageName": "kn.png",
-        "position": {
-          "x": -104,
-          "y": -78
+        "gridPosition": {
+          "row": 1,
+          "col": 2,
+          "x": 52,
+          "y": 26
         }
-      }
+      },
+      "fileSize": 683
+    },
+    {
+      "skillId": "KN_PIERCE",
+      "skillName": "長矛刺擊",
+      "iconPath": "skill-icons/KN_PIERCE.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "gridPosition": {
+          "row": 2,
+          "col": 2,
+          "x": 52,
+          "y": 52
+        }
+      },
+      "fileSize": 667
     },
     {
       "skillId": "KN_BRANDISHSPEAR",
@@ -252,11 +238,344 @@
       "iconPath": "skill-icons/KN_BRANDISHSPEAR.png",
       "spriteSource": {
         "imageName": "kn.png",
-        "position": {
+        "gridPosition": {
+          "row": 2,
+          "col": 0,
           "x": 0,
-          "y": -104
+          "y": 52
         }
-      }
+      },
+      "fileSize": 650
+    },
+    {
+      "skillId": "KN_SPEARBOOMERANG",
+      "skillName": "騎乘攻擊",
+      "iconPath": "skill-icons/KN_SPEARBOOMERANG.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "gridPosition": {
+          "row": 0,
+          "col": 2,
+          "x": 52,
+          "y": 0
+        }
+      },
+      "fileSize": 876
+    },
+    {
+      "skillId": "KN_CHARGEATK",
+      "skillName": "衝鋒攻擊",
+      "iconPath": "skill-icons/KN_CHARGEATK.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 0,
+          "x": 0,
+          "y": 26
+        }
+      },
+      "fileSize": 666
+    },
+    {
+      "skillId": "KN_ONEHAND",
+      "skillName": "單手劍攻擊速度增加",
+      "iconPath": "skill-icons/KN_ONEHAND.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 1,
+          "x": 26,
+          "y": 26
+        }
+      },
+      "fileSize": 783
+    },
+    {
+      "skillId": "CR_AUTOGUARD",
+      "skillName": "自動防禦",
+      "iconPath": "skill-icons/CR_AUTOGUARD.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 0,
+          "x": 0,
+          "y": 26
+        }
+      },
+      "fileSize": 636
+    },
+    {
+      "skillId": "CR_SHIELDCHARGE",
+      "skillName": "盾擊",
+      "iconPath": "skill-icons/CR_SHIELDCHARGE.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 3,
+          "col": 0,
+          "x": 0,
+          "y": 78
+        }
+      },
+      "fileSize": 714
+    },
+    {
+      "skillId": "CR_SHIELDBOOMERANG",
+      "skillName": "迴旋盾擊",
+      "iconPath": "skill-icons/CR_SHIELDBOOMERANG.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 2,
+          "col": 3,
+          "x": 78,
+          "y": 52
+        }
+      },
+      "fileSize": 731
+    },
+    {
+      "skillId": "CR_REFLECTSHIELD",
+      "skillName": "光之盾",
+      "iconPath": "skill-icons/CR_REFLECTSHIELD.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 1,
+          "x": 26,
+          "y": 26
+        }
+      },
+      "fileSize": 802
+    },
+    {
+      "skillId": "CR_REFLECTSHIELD_ALT",
+      "skillName": "反射盾",
+      "iconPath": "skill-icons/CR_REFLECTSHIELD_ALT.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 2,
+          "col": 2,
+          "x": 52,
+          "y": 52
+        }
+      },
+      "fileSize": 610
+    },
+    {
+      "skillId": "CR_TRUST",
+      "skillName": "信任",
+      "iconPath": "skill-icons/CR_TRUST.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 3,
+          "col": 3,
+          "x": 78,
+          "y": 78
+        }
+      },
+      "fileSize": 590
+    },
+    {
+      "skillId": "CR_HOLYCROSS",
+      "skillName": "聖十字攻擊",
+      "iconPath": "skill-icons/CR_HOLYCROSS.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 2,
+          "col": 0,
+          "x": 0,
+          "y": 52
+        }
+      },
+      "fileSize": 713
+    },
+    {
+      "skillId": "CR_GRANDCROSS",
+      "skillName": "聖十字審判",
+      "iconPath": "skill-icons/CR_GRANDCROSS.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 3,
+          "x": 78,
+          "y": 26
+        }
+      },
+      "fileSize": 500
+    },
+    {
+      "skillId": "CR_SACRIFICE",
+      "skillName": "犧牲",
+      "iconPath": "skill-icons/CR_SACRIFICE.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 2,
+          "x": 52,
+          "y": 26
+        }
+      },
+      "fileSize": 673
+    },
+    {
+      "skillId": "AL_HEAL",
+      "skillName": "治療術",
+      "iconPath": "skill-icons/AL_HEAL.png",
+      "spriteSource": {
+        "imageName": "al.png",
+        "gridPosition": {
+          "row": 0,
+          "col": 3,
+          "x": 78,
+          "y": 0
+        }
+      },
+      "fileSize": 610
+    },
+    {
+      "skillId": "AL_BLESSING",
+      "skillName": "天使之護",
+      "iconPath": "skill-icons/AL_BLESSING.png",
+      "spriteSource": {
+        "imageName": "al.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 2,
+          "x": 52,
+          "y": 26
+        }
+      },
+      "fileSize": 554
+    },
+    {
+      "skillId": "AL_HOLYLIGHT",
+      "skillName": "天使之擊",
+      "iconPath": "skill-icons/AL_HOLYLIGHT.png",
+      "spriteSource": {
+        "imageName": "al.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 1,
+          "x": 26,
+          "y": 26
+        }
+      },
+      "fileSize": 502
+    },
+    {
+      "skillId": "AL_CURE",
+      "skillName": "治癒術",
+      "iconPath": "skill-icons/AL_CURE.png",
+      "spriteSource": {
+        "imageName": "al.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 3,
+          "x": 78,
+          "y": 26
+        }
+      },
+      "fileSize": 629
+    },
+    {
+      "skillId": "CR_PROVIDENCE",
+      "skillName": "神祐之光",
+      "iconPath": "skill-icons/CR_PROVIDENCE.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 2,
+          "col": 1,
+          "x": 26,
+          "y": 52
+        }
+      },
+      "fileSize": 574
+    },
+    {
+      "skillId": "KN_SPEARMASTERY",
+      "skillName": "長矛使用熟練度",
+      "iconPath": "skill-icons/KN_SPEARMASTERY.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "gridPosition": {
+          "row": 2,
+          "col": 1,
+          "x": 26,
+          "y": 52
+        }
+      },
+      "fileSize": 469
+    },
+    {
+      "skillId": "CR_SPEARQUICKEN",
+      "skillName": "長矛加速術",
+      "iconPath": "skill-icons/CR_SPEARQUICKEN.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 3,
+          "col": 2,
+          "x": 52,
+          "y": 78
+        }
+      },
+      "fileSize": 687
+    },
+    {
+      "skillId": "KN_RIDING",
+      "skillName": "騎乘術",
+      "iconPath": "skill-icons/KN_RIDING.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "gridPosition": {
+          "row": 1,
+          "col": 3,
+          "x": 78,
+          "y": 26
+        }
+      },
+      "fileSize": 672
+    },
+    {
+      "skillId": "KN_CAVALIERMASTERY",
+      "skillName": "騎兵修練",
+      "iconPath": "skill-icons/KN_CAVALIERMASTERY.png",
+      "spriteSource": {
+        "imageName": "kn.png",
+        "gridPosition": {
+          "row": 0,
+          "col": 3,
+          "x": 78,
+          "y": 0
+        }
+      },
+      "fileSize": 600
+    },
+    {
+      "skillId": "CR_SHRINK",
+      "skillName": "退縮",
+      "iconPath": "skill-icons/CR_SHRINK.png",
+      "spriteSource": {
+        "imageName": "cr.png",
+        "gridPosition": {
+          "row": 3,
+          "col": 1,
+          "x": 26,
+          "y": 78
+        }
+      },
+      "fileSize": 947
     }
   ]
 }
