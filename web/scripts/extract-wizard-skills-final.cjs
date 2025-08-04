@@ -31,8 +31,8 @@ const chineseNameToSkillId = {
   '冰刃之牆': 'WZ_ICEWALL',
   '霜凍之術': 'WZ_FROSTNOVA',
   '暴風雪': 'WZ_STORMGUST',
-  '地震術': 'WZ_HEAVENDRIVE',
-  '崩裂術': 'WZ_EARTHSPIKE',
+  '地震術': 'WZ_EARTHSPIKE',
+  '崩裂術': 'WZ_HEAVENDRIVE',
   '泥沼地': 'WZ_QUAGMIRE',
   '火狩芽': 'WZ_SIGHTBLASTER'
 };

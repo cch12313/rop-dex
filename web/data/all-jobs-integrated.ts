@@ -53,7 +53,7 @@ const skillNameMapping: { [key: string]: string } = {
   'MG_NAPALMBEAT': '聖靈召喚',
   'MG_FIREBOLT': '火箭術',
   'MG_SIGHT': '火狩',
-  'WZ_EARTHSPIKE': '崩裂術',
+  'WZ_EARTHSPIKE': '地震術',
   'MG_FROSTDIVER': '冰凍術',
   'MG_THUNDERSTORM': '雷爆術',
   'MG_SOULSTRIKE': '心靈爆破',
@@ -153,7 +153,7 @@ const skillNameMapping: { [key: string]: string } = {
   'WZ_ESTIMATION': '怪物情報',
   'WZ_ICEWALL': '冰刃之牆',
   'WZ_JUPITEL': '雷鳴術',
-  'WZ_HEAVENDRIVE': '地震術',
+  'WZ_HEAVENDRIVE': '崩裂術',
   'WZ_SIGHTRASHER': '火之獵殺',
   'WZ_FIREPILLAR': '火柱攻擊',
   'WZ_SIGHTBLASTER': '火狩芽',
@@ -163,6 +163,7 @@ const skillNameMapping: { [key: string]: string } = {
   'WZ_METEOR': '隕石術',
   'WZ_WATERBALL': '水球術',
   'WZ_STORMGUST': '暴風雪',
+  'WZ_FIREPILLAR2': '火焰藤蔓',
   
   // 賢者技能
   'SA_ADVANCEDBOOK': '進階書籍修練',
