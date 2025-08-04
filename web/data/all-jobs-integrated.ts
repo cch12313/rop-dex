@@ -29,22 +29,29 @@ const skillNameMapping: { [key: string]: string } = {
   'KN_BRANDISHSPEAR': '投擲長矛攻擊',
   
   // 十字軍技能
-  'CR_TRUST': '信任',
   'CR_AUTOGUARD': '自動防禦',
-  'CR_SPEARQUICKEN': '長矛加速術',
-  'CR_SHRINK': '退縮',
-  'AL_DP': '神聖攻擊',
-  'AL_HEAL': '治療術',
   'CR_SHIELDCHARGE': '盾擊',
-  'AL_DEMONBANE': '惡魔剋星',
-  'CR_PROVIDENCE': '神祐之光',
-  'AL_CURE': '治癒術',
   'CR_SHIELDBOOMERANG': '迴旋盾擊',
-  'CR_HOLYCROSS': '聖十字攻擊',
-  'CR_DEFENDER': '守護者',
+  'CR_DEFENDER': '光之盾',
   'CR_REFLECTSHIELD': '反射盾',
+  'CR_TRUST': '信任',
+  'CR_HOLYCROSS': '聖十字攻擊',
   'CR_GRANDCROSS': '聖十字審判',
   'CR_DEVOTION': '犧牲',
+  'CR_PROVIDENCE': '神祐之光',
+  'CR_SPEARQUICKEN': '長矛加速術',
+  'CR_SHRINK': '退縮',
+  
+  // 十字軍繼承的服事技能
+  'AL_HEAL': '治療術',
+  'AL_DP': '天使之護',
+  'AL_DEMONBANE': '天使之擊',
+  'AL_CURE': '治癒術',
+  
+  // 十字軍繼承的騎士技能
+  'KN_SPEARMASTERY': '長矛使用熟練度',
+  'KN_RIDING': '騎乘術',
+  'KN_CAVALIERMASTERY': '騎兵修練',
   
   // 法師技能
   'MG_STONECURSE': '石化術',
