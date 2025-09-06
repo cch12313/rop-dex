@@ -6,10 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 這是一個RO樂園攻略/資訊網站（rop-dex.com），採MVP方式開發，結合學習技術目的。
 
 ## 技術架構
-- Web前端: Nuxt 3 + Tailwind CSS
+- Web前端: Nuxt 3 + Tailwind CSS + pnpm
 - 後端: Go (未來規劃)
-- 部署: Cloudflare Pages
+- 部署: Cloudflare Pages (從 GKE 遷移中)
 - 域名: rop-dex.com (Cloudflare管理)
+- Node.js: 22.19.0
 
 ## 專案結構
 ```
@@ -42,6 +43,12 @@ rop-dex/
 ### 進行中
 - [ ] 技能先決條件邏輯完善
 
+### 已完成的重大變更
+- [x] 從 GKE 遷移到 Cloudflare Pages（完成 - 2025-09-06）
+  - 成功部署到 https://rop-dex.com 和 https://www.rop-dex.com
+  - 轉換為 pnpm 管理依賴
+  - GKE 資源已完全清理
+
 ## 功能開發順序
 1. 技能模擬器（Skill Simulator）- 參考 http://ragzero.kr/skilltree/index_sakray.html
 2. 素質模擬器（Stat Simulator）
@@ -54,24 +61,30 @@ rop-dex/
 # 進入專案目錄
 cd web
 
-# 安裝依賴
-npm install
+# 安裝依賴 (使用 pnpm)
+pnpm install
 
 # 啟動開發伺服器
-npm run dev
+pnpm run dev
 
 # 建置專案 (靜態生成)
-npm run build
-npm run generate  # 等同於 build，使用 nuxt generate
+pnpm run build
+pnpm run generate  # 等同於 build，使用 nuxt generate
 
 # 本地預覽靜態網站
-npm run preview
-
-# 容器部署啟動 (GKE)
-npm run start  # 實際執行: nuxt preview --port 3000 --host 0.0.0.0
+pnpm run preview
 
 # 準備 Nuxt 環境
-npm run postinstall  # 執行 nuxt prepare
+pnpm run postinstall  # 執行 nuxt prepare
+```
+
+**Cloudflare Pages 部署設定**：
+```
+Framework preset: Nuxt.js (static HTML export)
+Build command: pnpm run generate
+Build output directory: .output/public
+Root directory: web
+Node.js version: 22.19.0 (自動偵測)
 ```
 
 **注意事項**：
@@ -222,6 +235,35 @@ npm run postinstall  # 執行 nuxt prepare
 
 **修正檔案**：
 - `/web/data/all-jobs-integrated.ts` - 補完 skillNameMapping 中所有 294 個技能的中文翻譯
+
+#### 問題：網頁技能擷取不完整 (2025-08-04)
+**錯誤原因**：
+- 在從 ro.ntome.com 擷取技能座標時，只獲取了頁面初始可見的技能
+- 沒有滾動頁面獲取完整技能列表，導致遺漏部分技能
+- 錯誤假設網頁上看不到的技能就不存在
+
+**錯誤分析**：
+1. 未考慮網頁需要滾動才能顯示完整內容
+2. 沒有與用戶提供的官方截圖進行完整對比驗證
+3. 瀏覽器自動化腳本缺少滾動和等待載入的邏輯
+
+**避免方法**：
+1. **完整頁面擷取**：使用 Playwright 時必須滾動到頁面底部確保所有內容載入
+2. **分段驗證**：每次擷取後都要與用戶提供的官方資料進行完整對比
+3. **滾動腳本**：在技能座標擷取腳本中加入自動滾動功能
+4. **手動確認**：當發現技能數量不符時，主動詢問用戶確認
+
+**技能ID對應確認**：
+- 神祐之光 (신의 뜻) = Providence = CR_PROVIDENCE
+
+#### 問題：技能映射錯誤 - AL_DP (2025-08-04)
+**錯誤原因**：
+- 誤將 AL_DP 對應為 "天使之光"，但十字軍實際上沒有這個技能
+- 根據用戶提供的官方截圖確認，十字軍只有治療術、天使之護、天使之擊、治癒術四個服事技能
+
+**修正措施**：
+- 移除 skillNameMapping 中的 `'AL_DP': '天使之光'` 項目
+- 十字軍技能映射最終確認為28個技能 (而非29個)
 
 ## 技能名稱對應更新流程
 
