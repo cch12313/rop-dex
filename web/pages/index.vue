@@ -18,16 +18,17 @@
           Welcome to Ropdex
         </h1>
         <p class="text-xl text-gray-600 mb-8">
-          RO 樂園攻略網站，提供技能模擬器等實用工具
+          RO 樂園攻略網站，提供各種實用工具和資訊
         </p>
         
         <!-- Feature Cards -->
         <div class="grid grid-cols-1 gap-6 mt-12">
-          <NuxtLink to="/skill-simulator" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow block">
-            <div class="text-3xl mb-4">⚔️</div>
-            <h3 class="text-lg font-semibold mb-2">技能模擬器</h3>
-            <p class="text-gray-600 text-sm">規劃你的角色技能配點方案</p>
-          </NuxtLink>
+          <!-- 新功能將在此處加入 -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="text-3xl mb-4">🚧</div>
+            <h3 class="text-lg font-semibold mb-2">開發中</h3>
+            <p class="text-gray-600 text-sm">更多實用功能即將推出</p>
+          </div>
         </div>
       </div>
     </main>
