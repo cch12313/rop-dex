@@ -1,0 +1,226 @@
+/* RO 風格動畫效果 */
+
+/* 彈跳動畫 */
+@keyframes ro-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translate3d(0,0,0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* 閃爍動畫 */
+@keyframes ro-sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* 漂浮動畫 */
+@keyframes ro-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* 搖擺動畫 */
+@keyframes ro-wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
+}
+
+/* 心跳動畫 */
+@keyframes ro-heartbeat {
+  0%, 40%, 80%, 100% {
+    transform: scale(1);
+  }
+  20%, 60% {
+    transform: scale(1.1);
+  }
+}
+
+/* 彩虹漸變 */
+@keyframes ro-rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* 動畫工具類 */
+.ro-bounce {
+  animation: ro-bounce 2s infinite;
+}
+
+.ro-sparkle {
+  animation: ro-sparkle 1.5s ease-in-out infinite;
+}
+
+.ro-float {
+  animation: ro-float 3s ease-in-out infinite;
+}
+
+.ro-wiggle {
+  animation: ro-wiggle 2s ease-in-out;
+}
+
+.ro-heartbeat {
+  animation: ro-heartbeat 1.5s ease-in-out infinite;
+}
+
+.ro-rainbow {
+  animation: ro-rainbow 3s linear infinite;
+}
+
+/* 可愛的懸停效果 */
+.ro-hover-cute {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ro-hover-cute:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* 按鈕點擊效果 */
+.ro-click-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ro-click-effect::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.ro-click-effect:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* 載入動畫 */
+@keyframes ro-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ro-loading {
+  animation: ro-spin 1s linear infinite;
+}
+
+/* 漸變文字效果 */
+.ro-gradient-text {
+  background: linear-gradient(45deg, #ff5722, #ff7a45, #ec4899, #f472b6);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ro-gradient-move 3s ease infinite;
+}
+
+@keyframes ro-gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 延遲動畫類 */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* 3D 效果 */
+.ro-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+}
+
+.ro-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+/* 可愛的邊框動畫 */
+.ro-border-dance {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(45deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+  animation: ro-border-rotate 3s linear infinite;
+}
+
+@keyframes ro-border-rotate {
+  0% {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(0deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+  }
+  25% {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(90deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+  }
+  50% {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(180deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+  }
+  75% {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(270deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+  }
+  100% {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(360deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+  }
+}

@@ -68,7 +68,7 @@ rop-dex/
 # 進入專案目錄
 cd web
 
-# 安裝依賴 (使用 pnpm)
+# 安裝依賴 (必須使用 pnpm - 專案已從 npm 遷移)
 pnpm install
 
 # 啟動開發伺服器
@@ -84,6 +84,10 @@ pnpm run preview
 # 準備 Nuxt 環境
 pnpm run postinstall  # 執行 nuxt prepare
 ```
+
+**重要提醒**：
+- **必須使用 pnpm**：專案已從 npm 遷移至 pnpm，不要使用 npm 指令
+- **Node.js 版本**：必須使用 22.19.0（在 package.json engines 中指定）
 
 **Cloudflare Pages 部署設定**：
 ```
@@ -166,7 +170,7 @@ Node.js version: 22.19.0 (自動偵測)
 ## 部署目標
 - 使用 Cloudflare Pages 部署
 - 網域: rop-dex.com
-- 靜態生成 (npm run generate)
+- 靜態生成 (pnpm run generate)
 
 ## RO Zero 職業資料整合記錄
 
@@ -308,7 +312,7 @@ const skillNameMapping: { [key: string]: string } = {
 ```
 
 #### 6. 測試驗證
-- 啟動開發伺服器：`cd web && npm run dev`
+- 啟動開發伺服器：`cd web && pnpm run dev`
 - 使用 playwright 導航到 `http://localhost:3000/skill-simulator`
 - 選擇對應職業，驗證技能名稱顯示正確
 
