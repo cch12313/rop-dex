@@ -158,7 +158,7 @@
 
 /* 漸變文字效果 */
 .ro-gradient-text {
-  background: linear-gradient(45deg, #ff5722, #ff7a45, #ec4899, #f472b6);
+  background: linear-gradient(45deg, #3b82f6, #60a5fa, #f59e0b, #fbbf24);
   background-size: 400% 400%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -198,29 +198,29 @@
 .ro-border-dance {
   border: 2px solid transparent;
   background: linear-gradient(white, white) padding-box,
-              linear-gradient(45deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+              linear-gradient(45deg, #3b82f6, #f59e0b, #22c55e, #0ea5e9) border-box;
   animation: ro-border-rotate 3s linear infinite;
 }
 
 @keyframes ro-border-rotate {
   0% {
     background: linear-gradient(white, white) padding-box,
-                linear-gradient(0deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+                linear-gradient(0deg, #3b82f6, #f59e0b, #22c55e, #0ea5e9) border-box;
   }
   25% {
     background: linear-gradient(white, white) padding-box,
-                linear-gradient(90deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+                linear-gradient(90deg, #3b82f6, #f59e0b, #22c55e, #0ea5e9) border-box;
   }
   50% {
     background: linear-gradient(white, white) padding-box,
-                linear-gradient(180deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+                linear-gradient(180deg, #3b82f6, #f59e0b, #22c55e, #0ea5e9) border-box;
   }
   75% {
     background: linear-gradient(white, white) padding-box,
-                linear-gradient(270deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+                linear-gradient(270deg, #3b82f6, #f59e0b, #22c55e, #0ea5e9) border-box;
   }
   100% {
     background: linear-gradient(white, white) padding-box,
-                linear-gradient(360deg, #ff5722, #ec4899, #22c55e, #0ea5e9) border-box;
+                linear-gradient(360deg, #3b82f6, #f59e0b, #22c55e, #0ea5e9) border-box;
   }
 }

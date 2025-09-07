@@ -80,11 +80,11 @@ const badgeClasses = computed(() => {
     ],
     cute: [
       'bg-gradient-to-r',
-      'from-ro-pink-100',
-      'to-ro-pink-200',
-      'text-ro-pink-700',
-      'hover:from-ro-pink-200',
-      'hover:to-ro-pink-300'
+      'from-ro-accent-100',
+      'to-ro-accent-200',
+      'text-ro-accent-700',
+      'hover:from-ro-accent-200',
+      'hover:to-ro-accent-300'
     ],
     info: [
       'bg-ro-sky-100',

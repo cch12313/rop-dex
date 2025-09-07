@@ -103,13 +103,13 @@ const buttonClasses = computed(() => {
       'focus:ring-yellow-300'
     ],
     cute: [
-      'bg-gradient-to-r', 'from-ro-pink-400', 'to-ro-pink-500',
+      'bg-gradient-to-r', 'from-ro-accent-400', 'to-ro-accent-500',
       'text-white',
-      'hover:from-ro-pink-500',
-      'hover:to-ro-pink-600',
-      'hover:shadow-ro-hover',
+      'hover:from-ro-accent-500',
+      'hover:to-ro-accent-600',
+      'hover:shadow-ro-accent',
       'hover:-translate-y-1',
-      'focus:ring-ro-pink-300'
+      'focus:ring-ro-accent-300'
     ]
   }
 

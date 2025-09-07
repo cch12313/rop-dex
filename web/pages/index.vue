@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-ro-soft font-ro-body">
     <!-- Header -->
-    <header class="bg-white/90 backdrop-blur-sm shadow-ro-soft border-b-2 border-ro-pink-100">
+    <header class="bg-white/90 backdrop-blur-sm shadow-ro-soft border-b-2 border-ro-accent-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-6">
           <div class="flex items-center">
@@ -55,8 +55,7 @@
                 <RoIcon name="gem" class="ml-2 opacity-50" />
               </h3>
               <p class="text-ro-neutral-500 text-lg leading-relaxed group-hover:text-ro-neutral-600 transition-colors">
-                精確計算技能詠唱時間，<br>
-                考慮 INT、DEX 和裝備加成
+                計算技能詠唱時間<br>
               </p>
             </div>
           </div>
@@ -106,8 +105,8 @@
 
     <!-- 裝飾性背景元素 -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden">
-      <div class="absolute -top-40 -left-40 w-80 h-80 bg-ro-pink-200/20 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-ro-sky-200/20 rounded-full blur-3xl"></div>
+      <div class="absolute -top-40 -left-40 w-80 h-80 bg-ro-accent-200/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-ro-primary-200/20 rounded-full blur-3xl"></div>
       <div class="absolute top-1/2 left-1/4 w-60 h-60 bg-ro-green-200/20 rounded-full blur-3xl"></div>
     </div>
   </div>

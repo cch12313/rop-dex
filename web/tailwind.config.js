@@ -4,22 +4,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        // RO 風格配色 - 溫暖可愛的色調
+        // RO 風格配色 - 經典藍金色調
         ro: {
-          // 主色調 - 溫暖的橘粉色
+          // 主色調 - RO 經典深藍色
           primary: {
-            50: '#fff7f1',
-            100: '#ffe8d9',
-            200: '#ffd0b3',
-            300: '#ffab7d',
-            400: '#ff7a45',
-            500: '#ff5722',
-            600: '#e63900',
-            700: '#cc3300',
-            800: '#b32d00',
-            900: '#992600',
+            50: '#eff6ff',
+            100: '#dbeafe', 
+            200: '#bfdbfe',
+            300: '#93c5fd',
+            400: '#60a5fa',
+            500: '#3b82f6',
+            600: '#2563eb',
+            700: '#1d4ed8',
+            800: '#1e40af',
+            900: '#1e3a8a',
           },
-          // 輔助色 - 可愛的粉色
+          // 輔助色 - RO 金色元素
+          accent: {
+            50: '#fefce8',
+            100: '#fef3c7',
+            200: '#fde68a',
+            300: '#fcd34d',
+            400: '#fbbf24',
+            500: '#f59e0b',
+            600: '#d97706',
+            700: '#b45309',
+            800: '#92400e',
+            900: '#78350f',
+          },
+          // 保持粉色作為可愛元素 (重新命名為 pink)
           pink: {
             50: '#fdf2f8',
             100: '#fce7f3',
@@ -45,18 +58,18 @@ export default {
             800: '#166534',
             900: '#14532d',
           },
-          // 中性色 - 溫暖的米色
+          // 中性色 - 清爽的藍灰色
           neutral: {
-            50: '#fefdfb',
-            100: '#fcfaf7',
-            200: '#f7f3ed',
-            300: '#f1e8d9',
-            400: '#e4d5c1',
-            500: '#d4c2a4',
-            600: '#c2a982',
-            700: '#a68b5b',
-            800: '#8b7355',
-            900: '#725f46',
+            50: '#f8fafc',
+            100: '#f1f5f9',
+            200: '#e2e8f0',
+            300: '#cbd5e1',
+            400: '#94a3b8',
+            500: '#64748b',
+            600: '#475569',
+            700: '#334155',
+            800: '#1e293b',
+            900: '#0f172a',
           },
           // 天空色 - 柔和的藍色
           sky: {
@@ -88,15 +101,17 @@ export default {
         'ro-xl': '20px',
       },
       boxShadow: {
-        // 柔和的陰影效果
-        'ro-soft': '0 4px 20px rgba(255, 87, 34, 0.1)',
+        // 柔和的陰影效果 - 藍色主題
+        'ro-soft': '0 4px 20px rgba(59, 130, 246, 0.1)',
         'ro-card': '0 8px 25px rgba(0, 0, 0, 0.08)',
-        'ro-hover': '0 12px 35px rgba(255, 87, 34, 0.15)',
+        'ro-hover': '0 12px 35px rgba(59, 130, 246, 0.15)',
+        'ro-accent': '0 8px 25px rgba(245, 158, 11, 0.12)',
       },
       backgroundImage: {
-        // 漸變背景
-        'ro-primary': 'linear-gradient(135deg, #ff5722 0%, #ff7a45 100%)',
-        'ro-soft': 'linear-gradient(135deg, #fff7f1 0%, #fce7f3 100%)',
+        // 漸變背景 - 藍金色主題
+        'ro-primary': 'linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%)',
+        'ro-accent': 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)',
+        'ro-soft': 'linear-gradient(135deg, #eff6ff 0%, #fefce8 100%)',
         'ro-sky': 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
       }
     },
