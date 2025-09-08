@@ -36,11 +36,8 @@
         
         <!-- Feature Cards -->
         <div class="flex justify-center mt-16">
-          <!-- 素質模擬器 (規劃中) -->
-          <div class="group block bg-white/60 backdrop-blur-sm rounded-ro-xl shadow-ro-card border-2 border-ro-neutral-200 overflow-hidden relative ro-3d">
-            <RoBadge variant="success" class="absolute top-4 right-4 z-10 ro-float delay-200">
-              規劃中
-            </RoBadge>
+          <!-- 素質模擬器 -->
+          <NuxtLink to="/stat-calculator" class="group block bg-white/60 backdrop-blur-sm rounded-ro-xl shadow-ro-card border-2 border-ro-neutral-200 hover:border-ro-primary-300 overflow-hidden relative ro-3d hover:shadow-ro-hover transition-all duration-200">
             <div class="p-8 relative">
               <!-- 裝飾性背景圖示 -->
               <div class="absolute top-4 right-16 opacity-10">
@@ -58,7 +55,7 @@
                 配置你的角色屬性點<br>
               </p>
             </div>
-          </div>
+          </NuxtLink>
         </div>
 
         <!-- 可愛的裝飾元素 -->
