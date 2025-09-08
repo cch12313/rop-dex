@@ -52,7 +52,6 @@
                 <RoIcon name="heart" class="ml-2 opacity-50 ro-heartbeat" />
               </h3>
               <p class="text-ro-neutral-500 text-lg leading-relaxed group-hover:text-ro-neutral-600 transition-colors">
-                配置你的角色屬性點<br>
               </p>
             </div>
           </NuxtLink>
@@ -64,13 +63,6 @@
             <RoIcon name="flower" animated class="ro-bounce" />
             <span class="text-ro-neutral-400 font-ro-title ro-gradient-text">讓我們一起探索 RO 的世界吧</span>
             <RoIcon name="flower" animated class="ro-bounce delay-300" />
-          </div>
-          
-          <!-- 額外的可愛元素 -->
-          <div class="mt-8 flex justify-center space-x-6">
-            <RoIcon name="cat" size="lg" animated class="ro-wiggle ro-hover-cute" />
-            <RoIcon name="rainbow" size="lg" animated class="ro-rainbow ro-hover-cute" />
-            <RoIcon name="sun" size="lg" animated class="ro-sparkle ro-hover-cute" />
           </div>
         </div>
       </div>
