@@ -120,16 +120,22 @@
                 職業選擇
               </label>
               <select 
-                v-model="selectedJobClass"
+                v-model="selectedJob"
                 class="w-full px-3 py-2 border border-ro-accent-300 rounded-ro-md focus:ring-2 focus:ring-ro-accent-300 focus:border-ro-accent-400 bg-white"
               >
-                <option 
-                  v-for="jobClass in jobClasses" 
-                  :key="jobClass.id" 
-                  :value="jobClass"
+                <optgroup 
+                  v-for="group in jobClassGroups" 
+                  :key="group.classId" 
+                  :label="group.className"
                 >
-                  {{ jobClass.name }}
-                </option>
+                  <option 
+                    v-for="job in group.jobs" 
+                    :key="job.id" 
+                    :value="job"
+                  >
+                    {{ job.name }}
+                  </option>
+                </optgroup>
               </select>
             </div>
           </div>
@@ -327,10 +333,16 @@ interface Stats {
 const baseLevel = ref(60)
 const jobLevel = ref(50)
 
-// 職業資料
-interface JobClass {
+// 導入技能模擬器的職業資料
+import { jobClassesData } from '~/data/jobs'
+import type { Job, JobClass } from '~/types/skill'
+
+// 二轉職業資料 - 根據 RO 實際設定
+interface SecondJob {
   id: string
   name: string
+  classId: string
+  className: string
   hpCoefficient: number
   spCoefficient: number
   statBonuses: {
@@ -343,54 +355,46 @@ interface JobClass {
   }
 }
 
-// 六大職業系統
-const jobClasses: JobClass[] = [
-  {
-    id: 'swordsman',
-    name: '劍士系',
-    hpCoefficient: 1.2,
-    spCoefficient: 0.8,
-    statBonuses: { str: 2, vit: 1 }
-  },
-  {
-    id: 'mage',
-    name: '法師系',
-    hpCoefficient: 0.7,
-    spCoefficient: 1.5,
-    statBonuses: { int: 3, dex: 1 }
-  },
-  {
-    id: 'archer',
-    name: '弓箭手系',
-    hpCoefficient: 0.9,
-    spCoefficient: 1.0,
-    statBonuses: { dex: 2, agi: 2 }
-  },
-  {
-    id: 'acolyte',
-    name: '服事系',
-    hpCoefficient: 1.0,
-    spCoefficient: 1.3,
-    statBonuses: { int: 2, vit: 1, dex: 1 }
-  },
-  {
-    id: 'merchant',
-    name: '商人系',
-    hpCoefficient: 1.1,
-    spCoefficient: 0.9,
-    statBonuses: { str: 1, vit: 2, dex: 1 }
-  },
-  {
-    id: 'thief',
-    name: '盜賊系',
-    hpCoefficient: 0.8,
-    spCoefficient: 1.0,
-    statBonuses: { agi: 3, dex: 1 }
-  }
+// 定義所有二轉職業的詳細資料
+const secondJobs: SecondJob[] = [
+  // 劍士系
+  { id: '7', name: '騎士', classId: 'swordsman', className: '劍士系', hpCoefficient: 1.25, spCoefficient: 0.75, statBonuses: { str: 2, vit: 2 } },
+  { id: '14', name: '十字軍', classId: 'swordsman', className: '劍士系', hpCoefficient: 1.3, spCoefficient: 0.8, statBonuses: { str: 1, vit: 3 } },
+  
+  // 法師系
+  { id: '9', name: '巫師', classId: 'mage', className: '法師系', hpCoefficient: 0.65, spCoefficient: 1.6, statBonuses: { int: 4, dex: 1 } },
+  { id: '16', name: '賢者', classId: 'mage', className: '法師系', hpCoefficient: 0.75, spCoefficient: 1.4, statBonuses: { int: 3, dex: 2 } },
+  
+  // 弓箭手系  
+  { id: '11', name: '獵人', classId: 'archer', className: '弓箭手系', hpCoefficient: 0.85, spCoefficient: 0.95, statBonuses: { dex: 3, agi: 2 } },
+  { id: '19', name: '詩人', classId: 'archer', className: '弓箭手系', hpCoefficient: 0.8, spCoefficient: 1.1, statBonuses: { dex: 2, agi: 1, int: 1 } },
+  { id: '20', name: '舞孃', classId: 'archer', className: '弓箭手系', hpCoefficient: 0.8, spCoefficient: 1.1, statBonuses: { dex: 2, agi: 2, luk: 1 } },
+  
+  // 服事系
+  { id: '8', name: '牧師', classId: 'acolyte', className: '服事系', hpCoefficient: 1.0, spCoefficient: 1.4, statBonuses: { int: 3, vit: 1, dex: 1 } },
+  { id: '15', name: '武僧', classId: 'acolyte', className: '服事系', hpCoefficient: 1.1, spCoefficient: 1.2, statBonuses: { str: 2, agi: 2, vit: 1 } },
+  
+  // 商人系
+  { id: '10', name: '鐵匠', classId: 'merchant', className: '商人系', hpCoefficient: 1.15, spCoefficient: 0.85, statBonuses: { str: 2, vit: 2, dex: 1 } },
+  { id: '18', name: '鍊金術師', classId: 'merchant', className: '商人系', hpCoefficient: 1.05, spCoefficient: 1.0, statBonuses: { str: 1, int: 2, dex: 2 } },
+  
+  // 盜賊系
+  { id: '12', name: '刺客', classId: 'thief', className: '盜賊系', hpCoefficient: 0.75, spCoefficient: 0.9, statBonuses: { agi: 4, dex: 1 } },
+  { id: '17', name: '流氓', classId: 'thief', className: '盜賊系', hpCoefficient: 0.85, spCoefficient: 1.0, statBonuses: { agi: 3, str: 1, dex: 1 } }
+]
+
+// 按職業系統分組
+const jobClassGroups = [
+  { classId: 'swordsman', className: '劍士系', jobs: secondJobs.filter(job => job.classId === 'swordsman') },
+  { classId: 'mage', className: '法師系', jobs: secondJobs.filter(job => job.classId === 'mage') },
+  { classId: 'archer', className: '弓箭手系', jobs: secondJobs.filter(job => job.classId === 'archer') },
+  { classId: 'acolyte', className: '服事系', jobs: secondJobs.filter(job => job.classId === 'acolyte') },
+  { classId: 'merchant', className: '商人系', jobs: secondJobs.filter(job => job.classId === 'merchant') },
+  { classId: 'thief', className: '盜賊系', jobs: secondJobs.filter(job => job.classId === 'thief') }
 ]
 
 // 選擇的職業
-const selectedJobClass = ref(jobClasses[0])
+const selectedJob = ref(secondJobs[0])
 
 // 初始素質
 const stats = ref<Stats>({
@@ -483,7 +487,7 @@ function adjustLevel(type: 'base' | 'job', delta: number) {
 
 // 計算總素質（包含職業加成）
 const totalStats = computed(() => {
-  const bonuses = selectedJobClass.value.statBonuses
+  const bonuses = selectedJob.value.statBonuses
   return {
     str: stats.value.str + (bonuses.str || 0),
     agi: stats.value.agi + (bonuses.agi || 0),
@@ -497,13 +501,13 @@ const totalStats = computed(() => {
 // 計算角色狀態
 const calculatedHP = computed(() => {
   // 基礎 HP 計算，包含職業係數
-  const baseHP = (baseLevel.value * 8 + totalStats.value.vit * 5) * selectedJobClass.value.hpCoefficient
+  const baseHP = (baseLevel.value * 8 + totalStats.value.vit * 5) * selectedJob.value.hpCoefficient
   return Math.floor(Math.max(baseHP, 40))
 })
 
 const calculatedSP = computed(() => {
   // 基礎 SP 計算，包含職業係數
-  const baseSP = (baseLevel.value * 4 + totalStats.value.int * 3) * selectedJobClass.value.spCoefficient
+  const baseSP = (baseLevel.value * 4 + totalStats.value.int * 3) * selectedJob.value.spCoefficient
   return Math.floor(Math.max(baseSP, 10))
 })
 
