@@ -1,4 +1,4 @@
-import type { JobClass, Job, Skill } from '~/types/skill'
+import type { JobClass, Job, Skill, StatBonuses } from '~/types/skill'
 import { roSkillDatabase } from './ro_skills_final'
 
 // 技能名稱對照表 - 將韓文技能ID轉換為中文名稱
@@ -48,10 +48,7 @@ const skillNameMapping: { [key: string]: string } = {
   'AL_DEMONBANE': '天使之擊',
   'AL_CURE': '治癒術',
   
-  // 十字軍繼承的騎士技能
-  'KN_SPEARMASTERY': '長矛使用熟練度',
-  'KN_RIDING': '騎乘術',
-  'KN_CAVALIERMASTERY': '騎兵修練',
+  // 十字軍繼承的騎士技能已在騎士技能部分定義，無需重複
   
   // 法師技能
   'MG_STONECURSE': '石化術',
@@ -320,6 +317,115 @@ const skillNameMapping: { [key: string]: string } = {
   'DC_SCREAM': '戰吼'
 }
 
+// 職業統計資料映射表 - 從 stat-calculator.vue 合併過來
+interface JobStatsData {
+  classId: string
+  className: string
+  hpCoefficient: number
+  spCoefficient: number
+  statBonuses: StatBonuses
+}
+
+const jobStatsMapping: { [jobId: string]: JobStatsData } = {
+  // 劍士系
+  '7': { // 騎士
+    classId: 'swordsman',
+    className: '劍士系',
+    hpCoefficient: 1.25,
+    spCoefficient: 0.75,
+    statBonuses: { str: 2, vit: 2 }
+  },
+  '14': { // 十字軍
+    classId: 'swordsman',
+    className: '劍士系',
+    hpCoefficient: 1.3,
+    spCoefficient: 0.8,
+    statBonuses: { str: 1, vit: 3 }
+  },
+  // 法師系
+  '9': { // 巫師
+    classId: 'mage',
+    className: '法師系',
+    hpCoefficient: 0.65,
+    spCoefficient: 1.6,
+    statBonuses: { int: 4, dex: 1 }
+  },
+  '16': { // 賢者
+    classId: 'mage',
+    className: '法師系',
+    hpCoefficient: 0.75,
+    spCoefficient: 1.4,
+    statBonuses: { int: 3, dex: 2 }
+  },
+  // 弓箭手系
+  '11': { // 獵人
+    classId: 'archer',
+    className: '弓箭手系',
+    hpCoefficient: 0.85,
+    spCoefficient: 0.95,
+    statBonuses: { dex: 3, agi: 2 }
+  },
+  '19': { // 詩人
+    classId: 'archer',
+    className: '弓箭手系',
+    hpCoefficient: 0.8,
+    spCoefficient: 1.1,
+    statBonuses: { dex: 2, agi: 1, int: 1 }
+  },
+  '20': { // 舞孃
+    classId: 'archer',
+    className: '弓箭手系',
+    hpCoefficient: 0.8,
+    spCoefficient: 1.1,
+    statBonuses: { dex: 2, agi: 2, luk: 1 }
+  },
+  // 服事系
+  '8': { // 牧師
+    classId: 'acolyte',
+    className: '服事系',
+    hpCoefficient: 1.0,
+    spCoefficient: 1.4,
+    statBonuses: { int: 3, vit: 1, dex: 1 }
+  },
+  '15': { // 武僧
+    classId: 'acolyte',
+    className: '服事系',
+    hpCoefficient: 1.1,
+    spCoefficient: 1.2,
+    statBonuses: { str: 2, agi: 2, vit: 1 }
+  },
+  // 商人系
+  '10': { // 鐵匠
+    classId: 'merchant',
+    className: '商人系',
+    hpCoefficient: 1.15,
+    spCoefficient: 0.85,
+    statBonuses: { str: 2, vit: 2, dex: 1 }
+  },
+  '18': { // 鍊金術師
+    classId: 'merchant',
+    className: '商人系',
+    hpCoefficient: 1.05,
+    spCoefficient: 1.0,
+    statBonuses: { str: 1, int: 2, dex: 2 }
+  },
+  // 盜賊系
+  '12': { // 刺客
+    classId: 'thief',
+    className: '盜賊系',
+    hpCoefficient: 0.75,
+    spCoefficient: 0.9,
+    statBonuses: { agi: 4, dex: 1 }
+  },
+  '17': { // 流氓
+    classId: 'thief',
+    className: '盜賊系',
+    hpCoefficient: 0.85,
+    spCoefficient: 1.0,
+    statBonuses: { agi: 3, str: 1, dex: 1 }
+  }
+}
+
 // 將 ragzero 資料轉換為我們的格式
 function convertJobData(jobData: any, jobType: 'first' | 'second'): Job {
   const skills: Skill[] = []
@@ -391,13 +497,28 @@ function convertJobData(jobData: any, jobType: 'first' | 'second'): Job {
     skills.push(skill)
   }
   
+  // 獲取職業統計資料
+  const jobId = jobData.jobId.toString()
+  const statsData = jobStatsMapping[jobId] || {
+    classId: 'unknown',
+    className: '未知',
+    hpCoefficient: 1.0,
+    spCoefficient: 1.0,
+    statBonuses: {}
+  }
+
   return {
-    id: jobData.jobId.toString(),
+    id: jobId,
     name: jobData.jobName.chinese,
     icon: getJobIcon(jobData.jobName.chinese),
     description: `${jobData.jobName.korean} - ${jobData.jobName.chinese}`,
     skills,
-    baseSkillPoints: 49
+    baseSkillPoints: 49,
+    classId: statsData.classId,
+    className: statsData.className,
+    hpCoefficient: statsData.hpCoefficient,
+    spCoefficient: statsData.spCoefficient,
+    statBonuses: statsData.statBonuses
   }
 }
 

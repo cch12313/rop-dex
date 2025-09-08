@@ -1,5 +1,50 @@
 <template>
   <div class="min-h-screen bg-ro-soft">
+    <!-- 生產環境顯示開發中頁面 -->
+    <div v-if="!isDevelopment" class="min-h-screen bg-ro-soft flex items-center justify-center">
+      <div class="max-w-2xl mx-auto px-4 text-center">
+        <!-- Header -->
+        <header class="bg-white/90 backdrop-blur-sm shadow-ro-soft border-2 border-ro-accent-100 rounded-ro-xl mb-8">
+          <div class="px-6 py-4">
+            <div class="flex justify-between items-center">
+              <NuxtLink to="/" class="text-2xl font-bold font-ro-title bg-ro-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-200">
+                🌟 Rop-dex
+              </NuxtLink>
+              <NuxtLink to="/" class="text-ro-neutral-600 hover:text-ro-primary-500 font-ro-body transition-colors">
+                回到首頁
+              </NuxtLink>
+            </div>
+          </div>
+        </header>
+
+        <!-- 開發中內容 -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-ro-xl shadow-ro-card border-2 border-ro-accent-100 p-8">
+          <div class="text-6xl mb-6">🚧</div>
+          <h1 class="text-3xl font-bold font-ro-display ro-gradient-text mb-4">
+            素質計算機開發中
+          </h1>
+          <p class="text-lg text-ro-neutral-600 mb-6">
+            我們正在努力開發這個功能，敬請期待！
+          </p>
+          <div class="bg-ro-accent-50 rounded-ro-lg p-4 border border-ro-accent-200 mb-6">
+            <p class="text-sm text-ro-accent-700">
+              📅 預計完成時間：近期內<br>
+              🎯 功能內容：RO樂園角色素質點數分配計算機
+            </p>
+          </div>
+          <NuxtLink 
+            to="/" 
+            class="inline-flex items-center px-6 py-3 bg-ro-primary-500 text-white rounded-ro-lg hover:bg-ro-primary-600 transition-colors font-semibold"
+          >
+            <RoIcon name="arrow-left" class="mr-2" />
+            返回首頁
+          </NuxtLink>
+        </div>
+      </div>
+    </div>
+
+    <!-- 開發環境顯示完整功能 -->
+    <div v-else>
     <!-- Header -->
     <header class="bg-white/90 backdrop-blur-sm shadow-ro-soft border-b-2 border-ro-accent-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -316,10 +361,14 @@
         </div>
       </div>
     </main>
+    </div> <!-- 關閉開發環境 div -->
   </div>
 </template>
 
 <script setup lang="ts">
+// 環境檢查 - 只在開發環境顯示完整功能
+const isDevelopment = process.env.NODE_ENV === 'development'
+
 interface Stats {
   str: number
   agi: number
@@ -333,65 +382,16 @@ interface Stats {
 const baseLevel = ref(60)
 const jobLevel = ref(50)
 
-// 導入技能模擬器的職業資料
-import { jobClassesData } from '~/data/jobs'
-import type { Job, JobClass } from '~/types/skill'
+// 使用統一的職業資料來源
+import { allSecondJobs, jobClassesData } from '~/data/all-jobs-integrated'
 
-// 二轉職業資料 - 根據 RO 實際設定
-interface SecondJob {
-  id: string
-  name: string
-  classId: string
-  className: string
-  hpCoefficient: number
-  spCoefficient: number
-  statBonuses: {
-    str?: number
-    agi?: number
-    vit?: number
-    int?: number
-    dex?: number
-    luk?: number
-  }
-}
-
-// 定義所有二轉職業的詳細資料
-const secondJobs: SecondJob[] = [
-  // 劍士系
-  { id: '7', name: '騎士', classId: 'swordsman', className: '劍士系', hpCoefficient: 1.25, spCoefficient: 0.75, statBonuses: { str: 2, vit: 2 } },
-  { id: '14', name: '十字軍', classId: 'swordsman', className: '劍士系', hpCoefficient: 1.3, spCoefficient: 0.8, statBonuses: { str: 1, vit: 3 } },
-  
-  // 法師系
-  { id: '9', name: '巫師', classId: 'mage', className: '法師系', hpCoefficient: 0.65, spCoefficient: 1.6, statBonuses: { int: 4, dex: 1 } },
-  { id: '16', name: '賢者', classId: 'mage', className: '法師系', hpCoefficient: 0.75, spCoefficient: 1.4, statBonuses: { int: 3, dex: 2 } },
-  
-  // 弓箭手系  
-  { id: '11', name: '獵人', classId: 'archer', className: '弓箭手系', hpCoefficient: 0.85, spCoefficient: 0.95, statBonuses: { dex: 3, agi: 2 } },
-  { id: '19', name: '詩人', classId: 'archer', className: '弓箭手系', hpCoefficient: 0.8, spCoefficient: 1.1, statBonuses: { dex: 2, agi: 1, int: 1 } },
-  { id: '20', name: '舞孃', classId: 'archer', className: '弓箭手系', hpCoefficient: 0.8, spCoefficient: 1.1, statBonuses: { dex: 2, agi: 2, luk: 1 } },
-  
-  // 服事系
-  { id: '8', name: '牧師', classId: 'acolyte', className: '服事系', hpCoefficient: 1.0, spCoefficient: 1.4, statBonuses: { int: 3, vit: 1, dex: 1 } },
-  { id: '15', name: '武僧', classId: 'acolyte', className: '服事系', hpCoefficient: 1.1, spCoefficient: 1.2, statBonuses: { str: 2, agi: 2, vit: 1 } },
-  
-  // 商人系
-  { id: '10', name: '鐵匠', classId: 'merchant', className: '商人系', hpCoefficient: 1.15, spCoefficient: 0.85, statBonuses: { str: 2, vit: 2, dex: 1 } },
-  { id: '18', name: '鍊金術師', classId: 'merchant', className: '商人系', hpCoefficient: 1.05, spCoefficient: 1.0, statBonuses: { str: 1, int: 2, dex: 2 } },
-  
-  // 盜賊系
-  { id: '12', name: '刺客', classId: 'thief', className: '盜賊系', hpCoefficient: 0.75, spCoefficient: 0.9, statBonuses: { agi: 4, dex: 1 } },
-  { id: '17', name: '流氓', classId: 'thief', className: '盜賊系', hpCoefficient: 0.85, spCoefficient: 1.0, statBonuses: { agi: 3, str: 1, dex: 1 } }
-]
-
-// 按職業系統分組
-const jobClassGroups = [
-  { classId: 'swordsman', className: '劍士系', jobs: secondJobs.filter(job => job.classId === 'swordsman') },
-  { classId: 'mage', className: '法師系', jobs: secondJobs.filter(job => job.classId === 'mage') },
-  { classId: 'archer', className: '弓箭手系', jobs: secondJobs.filter(job => job.classId === 'archer') },
-  { classId: 'acolyte', className: '服事系', jobs: secondJobs.filter(job => job.classId === 'acolyte') },
-  { classId: 'merchant', className: '商人系', jobs: secondJobs.filter(job => job.classId === 'merchant') },
-  { classId: 'thief', className: '盜賊系', jobs: secondJobs.filter(job => job.classId === 'thief') }
-]
+// 獲取職業資料
+const secondJobs = allSecondJobs
+const jobClassGroups = jobClassesData.map(jobClass => ({
+  classId: jobClass.jobs[0]?.classId || 'unknown', 
+  className: jobClass.jobs[0]?.className || '未知',
+  jobs: jobClass.jobs
+}))
 
 // 選擇的職業
 const selectedJob = ref(secondJobs[0])

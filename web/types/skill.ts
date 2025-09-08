@@ -22,6 +22,15 @@ export interface SkillEffect {
   description: string
 }
 
+export interface StatBonuses {
+  str?: number
+  agi?: number
+  vit?: number
+  int?: number
+  dex?: number
+  luk?: number
+}
+
 export interface Job {
   id: string
   name: string
@@ -29,6 +38,11 @@ export interface Job {
   description: string
   skills: Skill[]
   baseSkillPoints: number
+  classId: string
+  className: string
+  hpCoefficient: number
+  spCoefficient: number
+  statBonuses: StatBonuses
 }
 
 export interface JobClass {
