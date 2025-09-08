@@ -35,31 +35,7 @@
         </p>
         
         <!-- Feature Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-4xl mx-auto">
-          <!-- 詠唱計算器 (即將推出) -->
-          <div class="group block bg-white/60 backdrop-blur-sm rounded-ro-xl shadow-ro-card border-2 border-ro-neutral-200 overflow-hidden relative ro-3d">
-            <RoBadge variant="cute" class="absolute top-4 right-4 z-10 ro-float">
-              即將推出
-            </RoBadge>
-            <div class="p-8 relative">
-              <!-- 裝飾性背景圖示 -->
-              <div class="absolute top-4 right-16 opacity-10">
-                <RoIcon name="magic" size="xl" />
-              </div>
-              
-              <div class="mb-6 opacity-60 group-hover:opacity-80 transition-opacity">
-                <RoIcon name="wizard" size="3xl" class="ro-sparkle" />
-              </div>
-              <h3 class="text-2xl font-bold text-ro-neutral-500 mb-4 font-ro-title flex items-center group-hover:text-ro-primary-400 transition-colors">
-                詠唱計算器
-                <RoIcon name="gem" class="ml-2 opacity-50" />
-              </h3>
-              <p class="text-ro-neutral-500 text-lg leading-relaxed group-hover:text-ro-neutral-600 transition-colors">
-                計算技能詠唱時間<br>
-              </p>
-            </div>
-          </div>
-
+        <div class="flex justify-center mt-16">
           <!-- 素質模擬器 (規劃中) -->
           <div class="group block bg-white/60 backdrop-blur-sm rounded-ro-xl shadow-ro-card border-2 border-ro-neutral-200 overflow-hidden relative ro-3d">
             <RoBadge variant="success" class="absolute top-4 right-4 z-10 ro-float delay-200">
