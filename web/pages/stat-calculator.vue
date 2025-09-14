@@ -435,19 +435,26 @@ const remainingStatPoints = computed(() => {
   return totalStatPoints.value - usedStatPoints.value
 })
 
-// 計算單一素質使用的點數
+// 計算單一素質使用的點數（累計）
 function calculateStatPointsUsed(statValue: number): number {
   let points = 0
   for (let i = 2; i <= statValue; i++) {
-    points += Math.floor((i - 1) / 10) + 1
+    // RO 樂園素質升級規則：使用升級前的素質值來決定消耗點數
+    // 例如：從素質值 10→11 時，消耗點數基於「10」計算 = 1點
+    //       從素質值 11→12 時，消耗點數基於「11」計算 = 2點
+    points += Math.floor((i - 2) / 10) + 1
   }
   return points
 }
 
-// 計算升級某素質需要的點數
+// 計算升級某素質需要的點數（單次）
 function getStatCost(statName: keyof Stats): number {
   const currentValue = stats.value[statName]
-  return Math.floor(currentValue / 10) + 1
+  // RO 樂園素質升級規則：根據當前素質值決定下次升級消耗
+  // 素質值 1-10: 下次升級消耗 1 點
+  // 素質值 11-20: 下次升級消耗 2 點  
+  // 素質值 21-30: 下次升級消耗 3 點，以此類推
+  return Math.floor((currentValue - 1) / 10) + 1
 }
 
 // 檢查是否可以增加素質
