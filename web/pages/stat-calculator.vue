@@ -302,15 +302,15 @@
                 <div class="space-y-2">
                   <div class="flex justify-between">
                     <span>剩餘點數:</span>
-                    <span class="font-bold text-ro-primary-600">{{ remainingStatPoints }}</span>
+                    <span class="font-bold text-ro-primary-600">{{ remainingPoints }}</span>
                   </div>
                   <div class="flex justify-between">
                     <span>總共點數:</span>
-                    <span>{{ totalStatPoints }}</span>
+                    <span>{{ totalPoints }}</span>
                   </div>
                   <div class="flex justify-between">
                     <span>已用點數:</span>
-                    <span>{{ usedStatPoints }}</span>
+                    <span>{{ usedPoints }}</span>
                   </div>
                 </div>
               </div>
@@ -324,11 +324,11 @@
                 <div class="space-y-2">
                   <div class="flex justify-between">
                     <span>HP:</span>
-                    <span class="font-bold text-red-600">{{ calculatedHP }}</span>
+                    <span class="font-bold text-red-600">{{ hp }}</span>
                   </div>
                   <div class="flex justify-between">
                     <span>SP:</span>
-                    <span class="font-bold text-blue-600">{{ calculatedSP }}</span>
+                    <span class="font-bold text-blue-600">{{ sp }}</span>
                   </div>
                   <div class="flex justify-between">
                     <span>攻擊力:</span>
@@ -347,7 +347,7 @@
 
               <!-- Control Buttons -->
               <div class="space-y-3">
-                <RoButton variant="warning" class="w-full" @click="resetStats">
+                <RoButton variant="warning" class="w-full" @click="resetStats()">
                   <RoIcon name="refresh" class="mr-2" />
                   重置素質
                 </RoButton>
@@ -369,21 +369,13 @@
 // 環境檢查 - 只在開發環境顯示完整功能
 const isDevelopment = process.env.NODE_ENV === 'development'
 
-interface Stats {
-  str: number
-  agi: number
-  vit: number
-  int: number
-  dex: number
-  luk: number
-}
-
-// 基本設定
-const baseLevel = ref(60)
-const jobLevel = ref(50)
-
 // 使用統一的職業資料來源
 import { allSecondJobs, jobClassesData } from '~/data/all-jobs-integrated'
+import { useStat, type Stats } from '~/composables/useStat'
+
+// 基本設定（頁面層級狀態）
+const baseLevel = ref(60)
+const jobLevel = ref(50)
 
 // 獲取職業資料
 const secondJobs = allSecondJobs
@@ -396,15 +388,13 @@ const jobClassGroups = jobClassesData.map(jobClass => ({
 // 選擇的職業
 const selectedJob = ref(secondJobs[0])
 
-// 初始素質
-const stats = ref<Stats>({
-  str: 1,
-  agi: 1,
-  vit: 1,
-  int: 1,
-  dex: 1,
-  luk: 1
-})
+// 使用新的 useStat composable
+const {
+  state: { stats, remainingPoints, usedPoints, totalPoints },
+  actions: { adjustStat, resetStats, canIncreaseStat, canDecreaseStat },
+  costs: { getStatCost, statCosts },
+  calculations: { hp, sp, attackPower, hitRate, dodgeRate, totalStats }
+} = useStat({ baseLevel, jobLevel, selectedJob })
 
 // SEO
 useSeoMeta({
@@ -414,70 +404,9 @@ useSeoMeta({
   ogDescription: 'RO樂園素質計算機，支援Base Lv 1-60與Job Lv 1-50的素質點數分配計算'
 })
 
-// 計算素質點數
-const totalStatPoints = computed(() => {
-  // Base level 提供的素質點數 (每級1點，但第1級不算)
-  const basePoints = baseLevel.value - 1
-  // Job level 提供的素質點數 (每級1點，但第1級不算)  
-  const jobPoints = jobLevel.value - 1
-  return basePoints + jobPoints
-})
+// 所有 stat 相關邏輯已遷移到 useStat composable
 
-const usedStatPoints = computed(() => {
-  let used = 0
-  for (const [statName, value] of Object.entries(stats.value)) {
-    used += calculateStatPointsUsed(value)
-  }
-  return used
-})
-
-const remainingStatPoints = computed(() => {
-  return totalStatPoints.value - usedStatPoints.value
-})
-
-// 計算單一素質使用的點數（累計）
-function calculateStatPointsUsed(statValue: number): number {
-  let points = 0
-  for (let i = 2; i <= statValue; i++) {
-    // RO 樂園素質升級規則：使用升級前的素質值來決定消耗點數
-    // 例如：從素質值 10→11 時，消耗點數基於「10」計算 = 1點
-    //       從素質值 11→12 時，消耗點數基於「11」計算 = 2點
-    points += Math.floor((i - 2) / 10) + 1
-  }
-  return points
-}
-
-// 計算升級某素質需要的點數（單次）
-function getStatCost(statName: keyof Stats): number {
-  const currentValue = stats.value[statName]
-  // RO 樂園素質升級規則：根據當前素質值決定下次升級消耗
-  // 素質值 1-10: 下次升級消耗 1 點
-  // 素質值 11-20: 下次升級消耗 2 點  
-  // 素質值 21-30: 下次升級消耗 3 點，以此類推
-  return Math.floor((currentValue - 1) / 10) + 1
-}
-
-// 檢查是否可以增加素質
-function canIncreaseStat(statName: keyof Stats): boolean {
-  const cost = getStatCost(statName)
-  return remainingStatPoints.value >= cost && stats.value[statName] < 99
-}
-
-// 檢查是否可以減少素質
-function canDecreaseStat(statName: keyof Stats): boolean {
-  return stats.value[statName] > 1
-}
-
-// 調整素質
-function adjustStat(statName: keyof Stats, delta: number) {
-  if (delta > 0 && canIncreaseStat(statName)) {
-    stats.value[statName]++
-  } else if (delta < 0 && canDecreaseStat(statName)) {
-    stats.value[statName]--
-  }
-}
-
-// 調整等級
+// 調整等級（頁面層級邏輯）
 function adjustLevel(type: 'base' | 'job', delta: number) {
   if (type === 'base') {
     const newLevel = baseLevel.value + delta
@@ -492,57 +421,9 @@ function adjustLevel(type: 'base' | 'job', delta: number) {
   }
 }
 
-// 計算總素質（包含職業加成）
-const totalStats = computed(() => {
-  const bonuses = selectedJob.value.statBonuses
-  return {
-    str: stats.value.str + (bonuses.str || 0),
-    agi: stats.value.agi + (bonuses.agi || 0),
-    vit: stats.value.vit + (bonuses.vit || 0),
-    int: stats.value.int + (bonuses.int || 0),
-    dex: stats.value.dex + (bonuses.dex || 0),
-    luk: stats.value.luk + (bonuses.luk || 0)
-  }
-})
+// 所有角色狀態計算已遷移到 useStat composable
 
-// 計算角色狀態
-const calculatedHP = computed(() => {
-  // 基礎 HP 計算，包含職業係數
-  const baseHP = (baseLevel.value * 8 + totalStats.value.vit * 5) * selectedJob.value.hpCoefficient
-  return Math.floor(Math.max(baseHP, 40))
-})
-
-const calculatedSP = computed(() => {
-  // 基礎 SP 計算，包含職業係數
-  const baseSP = (baseLevel.value * 4 + totalStats.value.int * 3) * selectedJob.value.spCoefficient
-  return Math.floor(Math.max(baseSP, 10))
-})
-
-const attackPower = computed(() => {
-  return Math.floor(totalStats.value.str + totalStats.value.dex / 5 + totalStats.value.luk / 3)
-})
-
-const hitRate = computed(() => {
-  return Math.floor(baseLevel.value + totalStats.value.dex + totalStats.value.luk / 3)
-})
-
-const dodgeRate = computed(() => {
-  return Math.floor(baseLevel.value + totalStats.value.agi + totalStats.value.luk / 5)
-})
-
-// 重置素質
-function resetStats() {
-  stats.value = {
-    str: 1,
-    agi: 1,
-    vit: 1,
-    int: 1,
-    dex: 1,
-    luk: 1
-  }
-}
-
-// 儲存配置 (暫時只是提示)
+// 儲存配置（UI 層功能）
 function saveStats() {
   alert('配置已儲存！(此功能尚在開發中)')
 }
