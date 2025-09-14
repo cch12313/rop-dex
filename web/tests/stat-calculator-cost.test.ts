@@ -1,7 +1,5 @@
 import { describe, test, expect } from 'vitest'
 
-// RO 樂園素質點數計算邏輯測試
-// 實作正確的 RO 素質升級消耗規則
 
 // 累計消耗計算：從素質值 1 升級到目標素質值的總消耗
 function calculateStatPointsUsed(statValue: number): number {
@@ -19,22 +17,16 @@ function getStatCost(currentValue: number): number {
   return Math.floor((currentValue - 1) / 10) + 1
 }
 
-describe('RO 樂園素質點數計算邏輯', () => {
-  test('單次升級消耗點數計算', () => {
-    // 1-10 區間：下次升級消耗 1 點
-    expect(getStatCost(1)).toBe(1)   // 1→2
-    expect(getStatCost(5)).toBe(1)   // 5→6
-    expect(getStatCost(10)).toBe(1)  // 10→11
-    
-    // 11-20 區間：下次升級消耗 2 點
-    expect(getStatCost(11)).toBe(2)  // 11→12
-    expect(getStatCost(15)).toBe(2)  // 15→16
-    expect(getStatCost(20)).toBe(2)  // 20→21
-    
-    // 21-30 區間：下次升級消耗 3 點
-    expect(getStatCost(21)).toBe(3)  // 21→22
-    expect(getStatCost(30)).toBe(3)  // 30→31
-  })
+describe('stat cost tests', () => {
+    test.each([[1, 1]
+        , [5, 1]
+        , [10, 1]
+        , [11, 2]
+        , [20, 2]
+        , [21, 3]
+        , [30, 3]])('current stat point is %i, upgrade should cost %i', (current, expected) => {
+        expect(getStatCost(current)).toBe(expected)
+    });
 
   test('累計消耗點數計算', () => {
     // 基礎測試
