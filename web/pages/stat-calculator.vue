@@ -195,135 +195,93 @@
               </h3>
               
               <!-- STR -->
-              <div class="stat-row">
-                <div class="stat-label">
-                  <span class="stat-name">STR</span>
-                  <span class="stat-description">{{ t('stat.names.str') }}</span>
-                </div>
-                <div class="stat-controls">
+              <div class="stat-row-enhanced">
+                <div class="stat-name-enhanced">STR</div>
+                <div class="stat-main-content">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('str', -1)" :disabled="!canDecreaseStat('str')">-</RoButton>
-                  <span class="stat-value">{{ stats.str }}</span>
+                  <div class="stat-display">
+                    <span class="stat-current">{{ stats.str }}</span>
+                    <span class="stat-bonus">+{{ jobBonuses.str || 0 }}</span>
+                    <span class="stat-total">({{ totalStats.str }})</span>
+                  </div>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('str', 1)" :disabled="!canIncreaseStat('str')">+</RoButton>
                 </div>
-                <div class="stat-bonus">
-                  + {{ jobBonuses.str || 0 }}
-                </div>
-                <div class="stat-cost">
-                  {{ t('stat.costLabel') }}: {{ getStatCost('str') }}
-                </div>
-                <div class="stat-total">
-                  {{ t('stat.totalLabel') }}: {{ totalStats.str }}
-                </div>
+                <div class="stat-cost-enhanced">Cost: {{ getStatCost('str') }}</div>
               </div>
 
               <!-- AGI -->
-              <div class="stat-row">
-                <div class="stat-label">
-                  <span class="stat-name">AGI</span>
-                  <span class="stat-description">{{ t('stat.names.agi') }}</span>
-                </div>
-                <div class="stat-controls">
+              <div class="stat-row-enhanced">
+                <div class="stat-name-enhanced">AGI</div>
+                <div class="stat-main-content">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('agi', -1)" :disabled="!canDecreaseStat('agi')">-</RoButton>
-                  <span class="stat-value">{{ stats.agi }}</span>
+                  <div class="stat-display">
+                    <span class="stat-current">{{ stats.agi }}</span>
+                    <span class="stat-bonus">+{{ jobBonuses.agi || 0 }}</span>
+                    <span class="stat-total">({{ totalStats.agi }})</span>
+                  </div>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('agi', 1)" :disabled="!canIncreaseStat('agi')">+</RoButton>
                 </div>
-                <div class="stat-bonus">
-                  + {{ jobBonuses.agi || 0 }}
-                </div>
-                <div class="stat-cost">
-                  {{ t('stat.costLabel') }}: {{ getStatCost('agi') }}
-                </div>
-                <div class="stat-total">
-                  {{ t('stat.totalLabel') }}: {{ totalStats.agi }}
-                </div>
+                <div class="stat-cost-enhanced">Cost: {{ getStatCost('agi') }}</div>
               </div>
 
               <!-- VIT -->
-              <div class="stat-row">
-                <div class="stat-label">
-                  <span class="stat-name">VIT</span>
-                  <span class="stat-description">{{ t('stat.names.vit') }}</span>
-                </div>
-                <div class="stat-controls">
+              <div class="stat-row-enhanced">
+                <div class="stat-name-enhanced">VIT</div>
+                <div class="stat-main-content">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('vit', -1)" :disabled="!canDecreaseStat('vit')">-</RoButton>
-                  <span class="stat-value">{{ stats.vit }}</span>
+                  <div class="stat-display">
+                    <span class="stat-current">{{ stats.vit }}</span>
+                    <span class="stat-bonus">+{{ jobBonuses.vit || 0 }}</span>
+                    <span class="stat-total">({{ totalStats.vit }})</span>
+                  </div>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('vit', 1)" :disabled="!canIncreaseStat('vit')">+</RoButton>
                 </div>
-                <div class="stat-bonus">
-                  + {{ jobBonuses.vit || 0 }}
-                </div>
-                <div class="stat-cost">
-                  {{ t('stat.costLabel') }}: {{ getStatCost('vit') }}
-                </div>
-                <div class="stat-total">
-                  {{ t('stat.totalLabel') }}: {{ totalStats.vit }}
-                </div>
+                <div class="stat-cost-enhanced">Cost: {{ getStatCost('vit') }}</div>
               </div>
 
               <!-- INT -->
-              <div class="stat-row">
-                <div class="stat-label">
-                  <span class="stat-name">INT</span>
-                  <span class="stat-description">{{ t('stat.names.int') }}</span>
-                </div>
-                <div class="stat-controls">
+              <div class="stat-row-enhanced">
+                <div class="stat-name-enhanced">INT</div>
+                <div class="stat-main-content">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('int', -1)" :disabled="!canDecreaseStat('int')">-</RoButton>
-                  <span class="stat-value">{{ stats.int }}</span>
+                  <div class="stat-display">
+                    <span class="stat-current">{{ stats.int }}</span>
+                    <span class="stat-bonus">+{{ jobBonuses.int || 0 }}</span>
+                    <span class="stat-total">({{ totalStats.int }})</span>
+                  </div>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('int', 1)" :disabled="!canIncreaseStat('int')">+</RoButton>
                 </div>
-                <div class="stat-bonus">
-                  + {{ jobBonuses.int || 0 }}
-                </div>
-                <div class="stat-cost">
-                  {{ t('stat.costLabel') }}: {{ getStatCost('int') }}
-                </div>
-                <div class="stat-total">
-                  {{ t('stat.totalLabel') }}: {{ totalStats.int }}
-                </div>
+                <div class="stat-cost-enhanced">Cost: {{ getStatCost('int') }}</div>
               </div>
 
               <!-- DEX -->
-              <div class="stat-row">
-                <div class="stat-label">
-                  <span class="stat-name">DEX</span>
-                  <span class="stat-description">{{ t('stat.names.dex') }}</span>
-                </div>
-                <div class="stat-controls">
+              <div class="stat-row-enhanced">
+                <div class="stat-name-enhanced">DEX</div>
+                <div class="stat-main-content">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('dex', -1)" :disabled="!canDecreaseStat('dex')">-</RoButton>
-                  <span class="stat-value">{{ stats.dex }}</span>
+                  <div class="stat-display">
+                    <span class="stat-current">{{ stats.dex }}</span>
+                    <span class="stat-bonus">+{{ jobBonuses.dex || 0 }}</span>
+                    <span class="stat-total">({{ totalStats.dex }})</span>
+                  </div>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('dex', 1)" :disabled="!canIncreaseStat('dex')">+</RoButton>
                 </div>
-                <div class="stat-bonus">
-                  + {{ jobBonuses.dex || 0 }}
-                </div>
-                <div class="stat-cost">
-                  {{ t('stat.costLabel') }}: {{ getStatCost('dex') }}
-                </div>
-                <div class="stat-total">
-                  {{ t('stat.totalLabel') }}: {{ totalStats.dex }}
-                </div>
+                <div class="stat-cost-enhanced">Cost: {{ getStatCost('dex') }}</div>
               </div>
 
               <!-- LUK -->
-              <div class="stat-row">
-                <div class="stat-label">
-                  <span class="stat-name">LUK</span>
-                  <span class="stat-description">{{ t('stat.names.luk') }}</span>
-                </div>
-                <div class="stat-controls">
+              <div class="stat-row-enhanced">
+                <div class="stat-name-enhanced">LUK</div>
+                <div class="stat-main-content">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('luk', -1)" :disabled="!canDecreaseStat('luk')">-</RoButton>
-                  <span class="stat-value">{{ stats.luk }}</span>
+                  <div class="stat-display">
+                    <span class="stat-current">{{ stats.luk }}</span>
+                    <span class="stat-bonus">+{{ jobBonuses.luk || 0 }}</span>
+                    <span class="stat-total">({{ totalStats.luk }})</span>
+                  </div>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('luk', 1)" :disabled="!canIncreaseStat('luk')">+</RoButton>
                 </div>
-                <div class="stat-bonus">
-                  + {{ jobBonuses.luk || 0 }}
-                </div>
-                <div class="stat-cost">
-                  {{ t('stat.costLabel') }}: {{ getStatCost('luk') }}
-                </div>
-                <div class="stat-total">
-                  {{ t('stat.totalLabel') }}: {{ totalStats.luk }}
-                </div>
+                <div class="stat-cost-enhanced">Cost: {{ getStatCost('luk') }}</div>
               </div>
             </div>
 
@@ -467,6 +425,22 @@ function adjustLevel(type: 'base' | 'job', delta: number) {
 function saveStats() {
   alert('配置已儲存！(此功能尚在開發中)')
 }
+
+// 根據總點數生成顏色樣式
+function getStatColorStyle(totalValue: number) {
+  // 計算顏色強度 (假設最大值99，最小值1)
+  const intensity = Math.min(Math.max((totalValue - 1) / 98, 0), 1)
+  
+  // 生成從淺到深的紅色系列
+  const red = Math.round(220 - (intensity * 120))     // 220 -> 100
+  const green = Math.round(100 - (intensity * 80))    // 100 -> 20  
+  const blue = Math.round(100 - (intensity * 80))     // 100 -> 20
+  
+  return {
+    color: `rgb(${red}, ${green}, ${blue})`,
+    fontWeight: 'bold'
+  }
+}
 </script>
 
 <style scoped>
@@ -504,5 +478,55 @@ function saveStats() {
 
 .stat-total {
   @apply text-sm text-ro-primary-600 font-bold min-w-[4rem] text-right;
+}
+
+/* 簡化版本的樣式 */
+.stat-row-compact {
+  @apply flex items-center justify-between p-3 bg-white rounded-ro-md border border-ro-neutral-200 mb-2;
+}
+
+.stat-name-compact {
+  @apply font-bold text-ro-primary-600 text-lg min-w-[3rem];
+}
+
+.stat-value-compact {
+  @apply font-bold text-xl min-w-[3rem] text-center;
+}
+
+.stat-cost-compact {
+  @apply text-sm text-ro-accent-600;
+}
+
+/* 新的增強版素質欄位樣式 */
+.stat-row-enhanced {
+  @apply flex items-center justify-between p-3 bg-white rounded-ro-md border border-ro-neutral-200 mb-2;
+}
+
+.stat-name-enhanced {
+  @apply font-bold text-ro-primary-600 text-lg min-w-[3rem];
+}
+
+.stat-main-content {
+  @apply flex items-center space-x-3 flex-1 justify-center;
+}
+
+.stat-display {
+  @apply flex items-center space-x-1 text-center min-w-[8rem];
+}
+
+.stat-current {
+  @apply font-bold text-xl text-ro-primary-700;
+}
+
+.stat-bonus {
+  @apply font-semibold text-sm text-ro-green-600;
+}
+
+.stat-total {
+  @apply font-bold text-lg text-ro-neutral-800;
+}
+
+.stat-cost-enhanced {
+  @apply text-sm text-ro-accent-600 min-w-[4rem] text-right;
 }
 </style>
