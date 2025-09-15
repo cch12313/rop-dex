@@ -333,14 +333,14 @@ const jobStatsMapping: { [jobId: string]: JobStatsData } = {
     className: '劍士系',
     hpCoefficient: 1.25,
     spCoefficient: 0.75,
-    statBonuses: { str: 2, vit: 2 }
+      statBonuses: { str: 8, agi: 2, vit: 10, int: 0, dex: 6, luk: 4 }
   },
   '14': { // 十字軍
     classId: 'swordsman',
     className: '劍士系',
     hpCoefficient: 1.3,
     spCoefficient: 0.8,
-    statBonuses: { str: 1, vit: 3 }
+      statBonuses: { str: 7, agi: 2, vit: 7, int: 6, dex: 3, luk: 5 }
   },
   // 法師系
   '9': { // 巫師
@@ -348,14 +348,14 @@ const jobStatsMapping: { [jobId: string]: JobStatsData } = {
     className: '法師系',
     hpCoefficient: 0.65,
     spCoefficient: 1.6,
-    statBonuses: { int: 4, dex: 1 }
+      statBonuses: { str: 1, agi: 8, vit: 1, int: 12, dex: 6, luk: 2 }
   },
   '16': { // 賢者
     classId: 'mage',
     className: '法師系',
     hpCoefficient: 0.75,
     spCoefficient: 1.4,
-    statBonuses: { int: 3, dex: 2 }
+      statBonuses: { str: 5, agi: 5, vit: 3, int: 9, dex: 5, luk: 3 }
   },
   // 弓箭手系
   '11': { // 獵人
@@ -363,21 +363,21 @@ const jobStatsMapping: { [jobId: string]: JobStatsData } = {
     className: '弓箭手系',
     hpCoefficient: 0.85,
     spCoefficient: 0.95,
-    statBonuses: { dex: 3, agi: 2 }
+    statBonuses: { str: 4, agi: 6, vit: 2, int: 4, dex: 10, luk: 4 }
   },
   '19': { // 詩人
     classId: 'archer',
     className: '弓箭手系',
     hpCoefficient: 0.8,
     spCoefficient: 1.1,
-    statBonuses: { dex: 2, agi: 1, int: 1 }
+    statBonuses: { str: 2, agi: 7, vit: 3, int: 5, dex: 9, luk: 4 }
   },
   '20': { // 舞孃
     classId: 'archer',
     className: '弓箭手系',
     hpCoefficient: 0.8,
     spCoefficient: 1.1,
-    statBonuses: { dex: 2, agi: 2, luk: 1 }
+    statBonuses: { str: 2, agi: 7, vit: 3, int: 5, dex: 5, luk: 8 }
   },
   // 服事系
   '8': { // 牧師
@@ -385,14 +385,14 @@ const jobStatsMapping: { [jobId: string]: JobStatsData } = {
     className: '服事系',
     hpCoefficient: 1.0,
     spCoefficient: 1.4,
-    statBonuses: { int: 3, vit: 1, dex: 1 }
+    statBonuses: { str: 5, agi: 4, vit: 5, int: 5, dex: 4, luk: 7 }
   },
   '15': { // 武僧
     classId: 'acolyte',
     className: '服事系',
     hpCoefficient: 1.1,
     spCoefficient: 1.2,
-    statBonuses: { str: 2, agi: 2, vit: 1 }
+    statBonuses: { str: 8, agi: 7, vit: 6, int: 2, dex: 4, luk: 3 }
   },
   // 商人系
   '10': { // 鐵匠
@@ -400,14 +400,14 @@ const jobStatsMapping: { [jobId: string]: JobStatsData } = {
     className: '商人系',
     hpCoefficient: 1.15,
     spCoefficient: 0.85,
-    statBonuses: { str: 2, vit: 2, dex: 1 }
+      statBonuses: { str: 6, agi: 2, vit: 6, int: 2, dex: 12, luk: 2 }
   },
   '18': { // 鍊金術師
     classId: 'merchant',
     className: '商人系',
     hpCoefficient: 1.05,
     spCoefficient: 1.0,
-    statBonuses: { str: 1, int: 2, dex: 2 }
+      statBonuses: { str: 5, agi: 6, vit: 3, int: 7, dex: 9, luk: 0 }
   },
   // 盜賊系
   '12': { // 刺客
@@ -415,14 +415,14 @@ const jobStatsMapping: { [jobId: string]: JobStatsData } = {
     className: '盜賊系',
     hpCoefficient: 0.75,
     spCoefficient: 0.9,
-    statBonuses: { agi: 4, dex: 1 }
+      statBonuses: { str: 6, agi: 10, vit: 2, int: 4, dex: 8, luk: 0 }
   },
   '17': { // 流氓
     classId: 'thief',
     className: '盜賊系',
     hpCoefficient: 0.85,
     spCoefficient: 1.0,
-    statBonuses: { agi: 3, str: 1, dex: 1 }
+      statBonuses: { str: 6, agi: 7, vit: 6, int: 4, dex: 7, luk: 0 }
   }
 }
 
