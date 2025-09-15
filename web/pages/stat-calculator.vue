@@ -96,7 +96,7 @@
             <!-- Base Level -->
             <div class="bg-ro-neutral-50 rounded-ro-lg p-4 border border-ro-neutral-200">
               <label class="block text-sm font-semibold text-ro-neutral-700 mb-2">
-                Base Level (60)
+                {{ t('levels.baseLevel') }} (60)
               </label>
               <div class="flex items-center space-x-3">
                 <RoButton 
@@ -129,7 +129,7 @@
             <!-- Job Level -->
             <div class="bg-ro-neutral-50 rounded-ro-lg p-4 border border-ro-neutral-200">
               <label class="block text-sm font-semibold text-ro-neutral-700 mb-2">
-                Job Level (50)
+                {{ t('levels.jobLevel') }} (50)
               </label>
               <div class="flex items-center space-x-3">
                 <RoButton 
@@ -162,7 +162,7 @@
             <!-- Job Class -->
             <div class="bg-ro-accent-50 rounded-ro-lg p-4 border border-ro-accent-200">
               <label class="block text-sm font-semibold text-ro-accent-700 mb-2">
-                職業選擇
+                {{ t('levels.jobSelection') }}
               </label>
               <select 
                 v-model="selectedJob"
@@ -191,14 +191,14 @@
             <div class="space-y-4">
               <h3 class="text-lg font-bold text-ro-neutral-800 mb-4 flex items-center">
                 <RoIcon name="sword" class="mr-2" />
-                基本素質
+                {{ t('stat.baseStats') }}
               </h3>
               
               <!-- STR -->
               <div class="stat-row">
                 <div class="stat-label">
                   <span class="stat-name">STR</span>
-                  <span class="stat-description">力量</span>
+                  <span class="stat-description">{{ t('stat.names.str') }}</span>
                 </div>
                 <div class="stat-controls">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('str', -1)" :disabled="!canDecreaseStat('str')">-</RoButton>
@@ -209,10 +209,10 @@
                   + {{ jobBonuses.str || 0 }}
                 </div>
                 <div class="stat-cost">
-                  消耗點數: {{ getStatCost('str') }}
+                  {{ t('stat.costLabel') }}: {{ getStatCost('str') }}
                 </div>
                 <div class="stat-total">
-                  總點數: {{ totalStats.str }}
+                  {{ t('stat.totalLabel') }}: {{ totalStats.str }}
                 </div>
               </div>
 
@@ -220,7 +220,7 @@
               <div class="stat-row">
                 <div class="stat-label">
                   <span class="stat-name">AGI</span>
-                  <span class="stat-description">敏捷</span>
+                  <span class="stat-description">{{ t('stat.names.agi') }}</span>
                 </div>
                 <div class="stat-controls">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('agi', -1)" :disabled="!canDecreaseStat('agi')">-</RoButton>
@@ -231,10 +231,10 @@
                   + {{ jobBonuses.agi || 0 }}
                 </div>
                 <div class="stat-cost">
-                  消耗點數: {{ getStatCost('agi') }}
+                  {{ t('stat.costLabel') }}: {{ getStatCost('agi') }}
                 </div>
                 <div class="stat-total">
-                  總點數: {{ totalStats.agi }}
+                  {{ t('stat.totalLabel') }}: {{ totalStats.agi }}
                 </div>
               </div>
 
@@ -242,7 +242,7 @@
               <div class="stat-row">
                 <div class="stat-label">
                   <span class="stat-name">VIT</span>
-                  <span class="stat-description">體力</span>
+                  <span class="stat-description">{{ t('stat.names.vit') }}</span>
                 </div>
                 <div class="stat-controls">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('vit', -1)" :disabled="!canDecreaseStat('vit')">-</RoButton>
@@ -253,10 +253,10 @@
                   + {{ jobBonuses.vit || 0 }}
                 </div>
                 <div class="stat-cost">
-                  消耗點數: {{ getStatCost('vit') }}
+                  {{ t('stat.costLabel') }}: {{ getStatCost('vit') }}
                 </div>
                 <div class="stat-total">
-                  總點數: {{ totalStats.vit }}
+                  {{ t('stat.totalLabel') }}: {{ totalStats.vit }}
                 </div>
               </div>
 
@@ -264,7 +264,7 @@
               <div class="stat-row">
                 <div class="stat-label">
                   <span class="stat-name">INT</span>
-                  <span class="stat-description">智力</span>
+                  <span class="stat-description">{{ t('stat.names.int') }}</span>
                 </div>
                 <div class="stat-controls">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('int', -1)" :disabled="!canDecreaseStat('int')">-</RoButton>
@@ -275,10 +275,10 @@
                   + {{ jobBonuses.int || 0 }}
                 </div>
                 <div class="stat-cost">
-                  消耗點數: {{ getStatCost('int') }}
+                  {{ t('stat.costLabel') }}: {{ getStatCost('int') }}
                 </div>
                 <div class="stat-total">
-                  總點數: {{ totalStats.int }}
+                  {{ t('stat.totalLabel') }}: {{ totalStats.int }}
                 </div>
               </div>
 
@@ -286,7 +286,7 @@
               <div class="stat-row">
                 <div class="stat-label">
                   <span class="stat-name">DEX</span>
-                  <span class="stat-description">靈巧</span>
+                  <span class="stat-description">{{ t('stat.names.dex') }}</span>
                 </div>
                 <div class="stat-controls">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('dex', -1)" :disabled="!canDecreaseStat('dex')">-</RoButton>
@@ -297,10 +297,10 @@
                   + {{ jobBonuses.dex || 0 }}
                 </div>
                 <div class="stat-cost">
-                  消耗點數: {{ getStatCost('dex') }}
+                  {{ t('stat.costLabel') }}: {{ getStatCost('dex') }}
                 </div>
                 <div class="stat-total">
-                  總點數: {{ totalStats.dex }}
+                  {{ t('stat.totalLabel') }}: {{ totalStats.dex }}
                 </div>
               </div>
 
@@ -308,7 +308,7 @@
               <div class="stat-row">
                 <div class="stat-label">
                   <span class="stat-name">LUK</span>
-                  <span class="stat-description">幸運</span>
+                  <span class="stat-description">{{ t('stat.names.luk') }}</span>
                 </div>
                 <div class="stat-controls">
                   <RoButton size="sm" variant="secondary" @click="adjustStat('luk', -1)" :disabled="!canDecreaseStat('luk')">-</RoButton>
@@ -319,10 +319,10 @@
                   + {{ jobBonuses.luk || 0 }}
                 </div>
                 <div class="stat-cost">
-                  消耗點數: {{ getStatCost('luk') }}
+                  {{ t('stat.costLabel') }}: {{ getStatCost('luk') }}
                 </div>
                 <div class="stat-total">
-                  總點數: {{ totalStats.luk }}
+                  {{ t('stat.totalLabel') }}: {{ totalStats.luk }}
                 </div>
               </div>
             </div>
@@ -333,19 +333,19 @@
               <div class="bg-ro-accent-50 rounded-ro-lg p-4 border border-ro-accent-200">
                 <h3 class="text-lg font-bold text-ro-accent-700 mb-3 flex items-center">
                   <RoIcon name="star" class="mr-2" />
-                  素質點數
+                  {{ t('stat.statPoints') }}
                 </h3>
                 <div class="space-y-2">
                   <div class="flex justify-between">
-                    <span>剩餘點數:</span>
+                    <span>{{ t('stat.remainingPoints') }}:</span>
                     <span class="font-bold text-ro-primary-600">{{ remainingPoints }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span>總共點數:</span>
+                    <span>{{ t('stat.totalPoints') }}:</span>
                     <span>{{ totalPoints }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span>已用點數:</span>
+                    <span>{{ t('stat.usedPoints') }}:</span>
                     <span>{{ usedPoints }}</span>
                   </div>
                 </div>
@@ -355,27 +355,27 @@
               <div class="bg-ro-green-50 rounded-ro-lg p-4 border border-ro-green-200">
                 <h3 class="text-lg font-bold text-ro-green-700 mb-3 flex items-center">
                   <RoIcon name="heart" class="mr-2" />
-                  角色狀態
+                  {{ t('stat.characterStats') }}
                 </h3>
                 <div class="space-y-2">
                   <div class="flex justify-between">
-                    <span>HP:</span>
+                    <span>{{ t('character.hp') }}:</span>
                     <span class="font-bold text-red-600">{{ hp }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span>SP:</span>
+                    <span>{{ t('character.sp') }}:</span>
                     <span class="font-bold text-blue-600">{{ sp }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span>攻擊力:</span>
+                    <span>{{ t('character.attackPower') }}:</span>
                     <span>{{ attackPower }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span>命中率:</span>
+                    <span>{{ t('character.hitRate') }}:</span>
                     <span>{{ hitRate }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span>迴避率:</span>
+                    <span>{{ t('character.dodgeRate') }}:</span>
                     <span>{{ dodgeRate }}</span>
                   </div>
                 </div>
@@ -385,11 +385,11 @@
               <div class="space-y-3">
                 <RoButton variant="warning" class="w-full" @click="resetStats()">
                   <RoIcon name="refresh" class="mr-2" />
-                  重置素質
+                  {{ t('stat.resetStats') }}
                 </RoButton>
                 <RoButton variant="success" class="w-full" @click="saveStats">
                   <RoIcon name="save" class="mr-2" />
-                  儲存配置
+                  {{ t('stat.saveConfig') }}
                 </RoButton>
               </div>
             </div>
@@ -408,6 +408,7 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 // 使用統一的職業資料來源
 import { allSecondJobs, jobClassesData } from '~/data/all-jobs-integrated'
 import { useStat, type Stats } from '~/composables/useStat'
+import { useTranslations } from '~/composables/useTranslations'
 
 // 基本設定（頁面層級狀態）
 const baseLevel = ref(60)
@@ -423,6 +424,9 @@ const jobClassGroups = jobClassesData.map(jobClass => ({
 
 // 選擇的職業
 const selectedJob = ref(secondJobs[0])
+
+// 翻譯管理
+const { t } = useTranslations()
 
 // 使用新的 useStat composable
 const {

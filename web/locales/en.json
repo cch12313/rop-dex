@@ -1,0 +1,34 @@
+{
+  "stat": {
+    "costLabel": "Cost",
+    "totalLabel": "Total",
+    "statPoints": "Stat Points",
+    "remainingPoints": "Remaining",
+    "totalPoints": "Total Points",
+    "usedPoints": "Used Points",
+    "characterStats": "Character Status", 
+    "baseStats": "Base Stats",
+    "resetStats": "Reset Stats",
+    "saveConfig": "Save Config",
+    "names": {
+      "str": "Strength",
+      "agi": "Agility",
+      "vit": "Vitality", 
+      "int": "Intelligence",
+      "dex": "Dexterity",
+      "luk": "Luck"
+    }
+  },
+  "character": {
+    "hp": "HP",
+    "sp": "SP",
+    "attackPower": "Attack Power", 
+    "hitRate": "Hit Rate",
+    "dodgeRate": "Dodge Rate"
+  },
+  "levels": {
+    "baseLevel": "Base Level",
+    "jobLevel": "Job Level", 
+    "jobSelection": "Job Selection"
+  }
+}
