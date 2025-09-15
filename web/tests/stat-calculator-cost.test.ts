@@ -3,13 +3,12 @@ import {getStatUpgradeCost, calculateStatPointsUsed} from '~/composables/useStat
 
 describe('role stat tests', () => {
     test.each([
-        [1, 1],
-        [5, 1],
-        [10, 1],
-        [11, 2],
-        [20, 2],
-        [21, 3],
-        [30, 3]
+        [1, 2],
+        [10, 2],
+        [11, 3],
+        [20, 3],
+        [21, 4],
+        [30, 4]
     ])('current stat point is %i, upgrade should cost %i', (current, expected) => {
         expect(getStatUpgradeCost(current)).toBe(expected)
     });
