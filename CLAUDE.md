@@ -707,3 +707,106 @@ ctx.drawImage(
 5. 更新CLAUDE.md中的處理記錄
 
 這些經驗將大幅提升未來處理其他職業時的效率和準確性。
+
+## Vue/Nuxt 架構設計原則 (2025-09-14)
+
+### 關注點分離原則
+- **UI 層**：只負責渲染和用戶交互，避免包含業務邏輯
+- **業務邏輯層**：使用 Composable 封裝，提供響應式狀態管理
+- **純函數層**：提供無副作用的計算邏輯，便於測試
+
+### Composable 設計模式
+
+#### 參數注入模式
+```typescript
+// 外部狀態透過參數傳入，保持響應式連結
+const useStat = ({ baseLevel, jobLevel, selectedJob }: UseStatParams) => {
+  // 內部狀態自行管理
+  const stats = ref<Stats>({ str: 1, agi: 1, ... })
+  // 組合外部和內部狀態進行計算
+  const totalPoints = computed(() => baseLevel.value + jobLevel.value - 2)
+}
+```
+
+#### 分組 API 設計
+```typescript
+return {
+  state: { /* 狀態和基礎計算 */ },
+  actions: { /* 用戶操作函數 */ },  
+  costs: { /* 成本計算相關 */ },
+  calculations: { /* 衍生數值計算 */ }
+}
+```
+
+#### 純函數導出原則
+```typescript
+// 導出純函數供測試使用，避免 Vue 依賴
+export const getStatUpgradeCost = (currentValue: number): number => { ... }
+
+// 在 composable 內部使用
+const useStat = (...) => {
+  const getStatCost = (statName) => getStatUpgradeCost(stats.value[statName])
+}
+```
+
+### 測試策略指南
+
+#### 測試分層原則
+- **單元測試**：測試純函數邏輯，使用參數化測試 (`test.each`)
+- **業務場景測試**：獨立文件處理 (`tests/scenarios/`），不混入單元測試
+- **整合測試**：測試 composable 的完整工作流程
+
+#### 測試文件組織
+```
+tests/
+├── unit/                    # 純函數單元測試
+├── composables/            # Composable 整合測試  
+├── scenarios/              # 業務場景測試
+└── e2e/                    # 端到端測試
+```
+
+#### 命名規範避坑
+- 避免與 Nuxt 自動導入衝突：使用 `getStatUpgradeCost` 而非 `getStatCost`
+- 函數命名要明確表達意圖：`calculateStatPointsUsed` vs `getStatCost`
+
+### 重構經驗記錄
+
+#### useStat Composable 重構 (2025-09-14)
+
+**背景動機**：
+- 頁面組件包含過多業務邏輯，難以測試和維護
+- UI 邏輯與業務邏輯耦合，不符合關注點分離原則
+
+**重構成果**：
+- 頁面代碼減少 60%，只保留 UI 邏輯
+- 測試從 Vue 環境依賴改為純函數測試，更簡潔高效
+- 分組 API 設計提升可讀性和可維護性
+
+**關鍵技術決策**：
+1. **狀態管理策略**：composable 內部管理業務狀態，外部只傳入配置參數
+2. **API 設計**：四大分組 (state/actions/costs/calculations) 清晰劃分職責  
+3. **測試友好**：導出純函數避免測試時的 Vue 環境設置複雜性
+4. **命名避坑**：重命名函數避免 Nuxt 自動導入衝突
+
+**遇到的問題與解決**：
+- **命名衝突**：`getStatCost` 與某個自動導入衝突 → 重命名為 `getStatUpgradeCost`
+- **測試架構**：composable 需要參數導致測試複雜 → 導出純函數供測試
+- **緩存問題**：開發服務器緩存舊版本 → 重啟清除緩存
+
+**最佳實踐總結**：
+1. 先設計純函數邏輯，再包裝成 composable
+2. 分組 API 比扁平化 API 更易維護
+3. 測試應該專注單一職責，避免場景測試混入單元測試
+4. 重構時保持小步快跑，每個階段都要驗證功能正確性
+
+### TDD 實踐經驗 (2025-09-14)
+
+#### TDD 流程應用
+- **Red**: 寫失敗測試，確認測試能正確捕捉錯誤
+- **Green**: 修正邏輯讓測試通過，專注功能實現
+- **Refactor**: 重構代碼結構，保持測試通過
+
+#### 關鍵學習
+- TDD 幫助發現邏輯錯誤：原本的素質消耗計算基於目標值，正確應基於當前值
+- 測試驅動的重構更安全：每步都有測試保障
+- 好的測試案例設計比實現更重要：`test.each` 參數化測試提高覆蓋率
