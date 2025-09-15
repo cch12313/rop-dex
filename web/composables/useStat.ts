@@ -34,7 +34,6 @@ export interface UseStatParams {
  * useStat composable 返回值類型
  */
 export interface UseStatReturn {
-    // 狀態管理
     state: {
         stats: Ref<Stats>
         remainingPoints: ComputedRef<number>
@@ -67,8 +66,6 @@ export interface UseStatReturn {
     }
 }
 
-// ===== 純函數導出供測試使用 =====
-
 /**
  * 計算單次升級消耗：基於當前素質值計算下次升級需要的點數
  * @param currentValue 當前素質值
@@ -97,9 +94,6 @@ export const calculateStatPointsUsed = (statValue: number): number => {
  * 將業務邏輯從 UI 分離，方便測試和復用
  */
 export const useStat = ({baseLevel, jobLevel, selectedJob}: UseStatParams): UseStatReturn => {
-
-    // ===== 狀態管理 =====
-
     const stats = ref<Stats>({
         str: 1,
         agi: 1,
@@ -110,7 +104,6 @@ export const useStat = ({baseLevel, jobLevel, selectedJob}: UseStatParams): UseS
     })
 
     // ===== 計算屬性 =====
-
     const totalPoints = computed(() => {
         const basePoints = baseLevel.value - 1
         const jobPoints = jobLevel.value - 1
@@ -151,7 +144,6 @@ export const useStat = ({baseLevel, jobLevel, selectedJob}: UseStatParams): UseS
     }))
 
     // ===== 角色狀態計算 =====
-
     const hp = computed(() => {
         const baseHP = (baseLevel.value * 8 + totalStats.value.vit * 5) * selectedJob.value.hpCoefficient
         return Math.floor(Math.max(baseHP, 40))
@@ -175,7 +167,6 @@ export const useStat = ({baseLevel, jobLevel, selectedJob}: UseStatParams): UseS
     })
 
     // ===== 操作函數 =====
-
     const getStatCostForStat = (statName: keyof Stats): number => {
         return getStatUpgradeCost(stats.value[statName])
     }
@@ -209,7 +200,6 @@ export const useStat = ({baseLevel, jobLevel, selectedJob}: UseStatParams): UseS
     }
 
     // ===== 返回分組 API =====
-
     return {
         state: {
             stats,
