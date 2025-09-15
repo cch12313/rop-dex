@@ -143,6 +143,8 @@ export const useStat = ({baseLevel, jobLevel, selectedJob}: UseStatParams): UseS
         luk: getStatUpgradeCost(stats.value.luk)
     }))
 
+    const jobBonuses = computed(() => selectedJob.value.statBonuses)
+
     // ===== 角色狀態計算 =====
     const hp = computed(() => {
         const baseHP = (baseLevel.value * 8 + totalStats.value.vit * 5) * selectedJob.value.hpCoefficient
@@ -217,7 +219,8 @@ export const useStat = ({baseLevel, jobLevel, selectedJob}: UseStatParams): UseS
 
         costs: {
             getStatCost: getStatCostForStat,
-            statCosts
+            statCosts,
+            jobBonuses
         },
 
         calculations: {

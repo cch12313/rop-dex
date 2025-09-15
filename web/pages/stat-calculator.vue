@@ -205,8 +205,14 @@
                   <span class="stat-value">{{ stats.str }}</span>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('str', 1)" :disabled="!canIncreaseStat('str')">+</RoButton>
                 </div>
+                <div class="stat-bonus">
+                  + {{ jobBonuses.str || 0 }}
+                </div>
                 <div class="stat-cost">
                   消耗點數: {{ getStatCost('str') }}
+                </div>
+                <div class="stat-total">
+                  總點數: {{ totalStats.str }}
                 </div>
               </div>
 
@@ -221,8 +227,14 @@
                   <span class="stat-value">{{ stats.agi }}</span>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('agi', 1)" :disabled="!canIncreaseStat('agi')">+</RoButton>
                 </div>
+                <div class="stat-bonus">
+                  + {{ jobBonuses.agi || 0 }}
+                </div>
                 <div class="stat-cost">
                   消耗點數: {{ getStatCost('agi') }}
+                </div>
+                <div class="stat-total">
+                  總點數: {{ totalStats.agi }}
                 </div>
               </div>
 
@@ -237,8 +249,14 @@
                   <span class="stat-value">{{ stats.vit }}</span>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('vit', 1)" :disabled="!canIncreaseStat('vit')">+</RoButton>
                 </div>
+                <div class="stat-bonus">
+                  + {{ jobBonuses.vit || 0 }}
+                </div>
                 <div class="stat-cost">
                   消耗點數: {{ getStatCost('vit') }}
+                </div>
+                <div class="stat-total">
+                  總點數: {{ totalStats.vit }}
                 </div>
               </div>
 
@@ -253,8 +271,14 @@
                   <span class="stat-value">{{ stats.int }}</span>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('int', 1)" :disabled="!canIncreaseStat('int')">+</RoButton>
                 </div>
+                <div class="stat-bonus">
+                  + {{ jobBonuses.int || 0 }}
+                </div>
                 <div class="stat-cost">
                   消耗點數: {{ getStatCost('int') }}
+                </div>
+                <div class="stat-total">
+                  總點數: {{ totalStats.int }}
                 </div>
               </div>
 
@@ -269,8 +293,14 @@
                   <span class="stat-value">{{ stats.dex }}</span>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('dex', 1)" :disabled="!canIncreaseStat('dex')">+</RoButton>
                 </div>
+                <div class="stat-bonus">
+                  + {{ jobBonuses.dex || 0 }}
+                </div>
                 <div class="stat-cost">
                   消耗點數: {{ getStatCost('dex') }}
+                </div>
+                <div class="stat-total">
+                  總點數: {{ totalStats.dex }}
                 </div>
               </div>
 
@@ -285,8 +315,14 @@
                   <span class="stat-value">{{ stats.luk }}</span>
                   <RoButton size="sm" variant="secondary" @click="adjustStat('luk', 1)" :disabled="!canIncreaseStat('luk')">+</RoButton>
                 </div>
+                <div class="stat-bonus">
+                  + {{ jobBonuses.luk || 0 }}
+                </div>
                 <div class="stat-cost">
                   消耗點數: {{ getStatCost('luk') }}
+                </div>
+                <div class="stat-total">
+                  總點數: {{ totalStats.luk }}
                 </div>
               </div>
             </div>
@@ -392,7 +428,7 @@ const selectedJob = ref(secondJobs[0])
 const {
   state: { stats, remainingPoints, usedPoints, totalPoints },
   actions: { adjustStat, resetStats, canIncreaseStat, canDecreaseStat },
-  costs: { getStatCost, statCosts },
+  costs: { getStatCost, statCosts, jobBonuses },
   calculations: { hp, sp, attackPower, hitRate, dodgeRate, totalStats }
 } = useStat({ baseLevel, jobLevel, selectedJob })
 
@@ -454,7 +490,15 @@ function saveStats() {
   @apply font-bold text-xl text-ro-neutral-800 min-w-[3rem] text-center;
 }
 
+.stat-bonus {
+  @apply text-sm text-ro-green-600 font-semibold min-w-[3rem] text-center;
+}
+
 .stat-cost {
   @apply text-sm text-ro-accent-600 min-w-[4rem] text-right;
+}
+
+.stat-total {
+  @apply text-sm text-ro-primary-600 font-bold min-w-[4rem] text-right;
 }
 </style>
